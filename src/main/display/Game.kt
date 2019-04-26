@@ -51,6 +51,8 @@ class Game : JPanel() {
     }
 
     init {
+        Board.obstacles.player.x=300
+        Board.obstacles.player.y=300
         background = Color.WHITE
         repaint()
     }
