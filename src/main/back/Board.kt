@@ -1,10 +1,10 @@
 package main.back
 
+import main.data.GameData.player
 import kotlin.random.Random
 
 object Board {
     val obstacles = ObstacleSet()
-    private val player = obstacles.player
 
     fun moveLeft(): Boolean {
         val (x, y, w, h) = player
