@@ -2,51 +2,81 @@ package main.display
 
 import main.App
 import main.back.Board
-import main.back.Rect
 import main.button
+import main.data.GameData.playing
+import main.data.GameData.shiftX
+import main.data.GameData.shiftY
+import main.data.StyleData
 import main.run
 import java.awt.BorderLayout
-import java.awt.Color
+import java.awt.FlowLayout
 import java.awt.event.KeyAdapter
 import java.awt.event.KeyEvent
+import javax.swing.JButton
 import javax.swing.JFrame
+import javax.swing.JPanel
 
 class GameView(app: App) : JFrame() {
-    private val back = button("Return", app.background) {
+    private val data = StyleData
+    private val buttons = JPanel()
+    private val back = button("Return", data.theme) {
         run(app, 300, 100, "Shooter")
         dispose()
     }
-    /*
-    private val play = button("Play", Color.GREEN) {
-        if(playing) Board.obstacles.add(Rect(
-                20,20,20,20, Color.CYAN
-        ))
-        else Board.obstacles.add(Rect(
-                25,25,20,20, Color.GRAY
-        ))
-        playing=!playing
+    private val play = button("Play", data.theme) {
+        when (playing) {
+            true -> {
+                playing = false
+                (it.source as JButton).text = "Play"
+            }
+            false -> {
+                playing = true
+                (it.source as JButton).text = "Stop"
+            }
+        }
     }
-     */
-    private val game = Game()
-    //private var playing = false
+    private val game = MapView()
     private val kl = object : KeyAdapter() {
         override fun keyPressed(k: KeyEvent) {
+<<<<<<< HEAD
+            if (playing)
+                when (k.extendedKeyCode) {
+                    0x44, 0x27 -> {
+                        shiftX -= 10; game.repaint()
+                    }
+                    0x57, 0x26 -> {
+                        shiftY += 10; game.repaint()
+                    }
+                    0x53, 0x28 -> {
+                        shiftY -= 10; game.repaint()
+                    }
+                    0x41, 0x25 -> {
+                        shiftX += 10; game.repaint()
+                    }
+                    else -> println(k.paramString())
+                }
+=======
+            if(playing)
             when (k.extendedKeyCode) {
-                0x44, 0x27 -> { game.shiftX-=10; game.repaint() }
-                0x57, 0x26 -> { game.shiftY+=10; game.repaint() }
-                0x53, 0x28 -> { game.shiftY-=10; game.repaint() }
-                0x41, 0x25 -> { game.shiftX+=10; game.repaint() }
+                0x44, 0x27 -> { shiftX-=10; game.repaint() }
+                0x57, 0x26 -> { shiftY+=10; game.repaint() }
+                0x53, 0x28 -> { shiftY-=10; game.repaint() }
+                0x41, 0x25 -> { shiftX+=10; game.repaint() }
                 else -> println(k.paramString())
             }
+>>>>>>> e7582d42ce85acb731b076e95c55d24ccb6b1ac8
         }
     }
 
     init {
         Board.fillMap()
         back.addKeyListener(kl)
-        //play.addKeyListener(kl)
+        play.addKeyListener(kl)
         add(game)
-        //add(BorderLayout.NORTH, play)
-        add(BorderLayout.SOUTH, back)
+        buttons.background = data.background
+        buttons.layout = FlowLayout()
+        buttons.add(play)
+        buttons.add(back)
+        add(BorderLayout.SOUTH, buttons)
     }
 }

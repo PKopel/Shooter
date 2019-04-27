@@ -1,46 +1,37 @@
 package main
 
+import main.data.StyleData
 import main.display.GameView
-import main.display.Settings
-import java.awt.Color
-import java.awt.FlowLayout
+import main.display.SettingsView
+import java.awt.GridLayout
 import javax.swing.JFrame
 
-object App : JFrame() {
-    var theme = 0
-        set(value) {
-            background = when (value) {
-                0 -> Color.LIGHT_GRAY
-                1 -> Color.DARK_GRAY
-                2 -> Color.GRAY
-                else -> Color.LIGHT_GRAY
-            }
-            start.background = background
-            settings.background = background
-            exit.background = background
-            field = value
-        }
-    private val start = button("Start", background) {
-        run(GameView(this), 700, 700,"Shooter")
+class App : JFrame() {
+    private val data = StyleData
+    private val start = button("Start", data.theme) {
+        run(GameView(this), 700, 700, "Shooter")
         dispose()
     }
-    private val settings = button("Settings", background) {
-        run(Settings(this), 300, 100)
+    private val settings = button("Settings", data.theme) {
+        run(SettingsView(), 150, 150)
         dispose()
     }
-    private val exit = button("Exit", background) {
+    private val exit = button("Exit", data.theme) {
         dispose()
     }
 
     init {
-        layout = FlowLayout()
+        background = data.background
+        layout = GridLayout(3, 1)
         add(start)
         add(settings)
         add(exit)
     }
 
-    @JvmStatic
-    fun main(args: Array<String>) {
-        run(this, 300, 100, "Shooter")
+    companion object {
+        @JvmStatic
+        fun main(args: Array<String>) {
+            run(App(), 150, 150, "Shooter")
+        }
     }
 }
