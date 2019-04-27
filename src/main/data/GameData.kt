@@ -5,6 +5,7 @@ import main.back.Rect
 import java.awt.Color
 
 object GameData {
+
     val player = Rect(240, 240, 20, 20, Color.BLUE)
 
     private var bufferX = 0

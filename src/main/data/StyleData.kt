@@ -4,6 +4,7 @@ import main.back.Board
 import java.awt.Color
 
 object StyleData {
+
     var theme: Color = Color.LIGHT_GRAY
     var background: Color = Color.WHITE
     var obstacles: Color = Color.ORANGE

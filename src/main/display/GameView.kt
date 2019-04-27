@@ -38,6 +38,7 @@ class GameView(app: App) : JFrame() {
     private val game = MapView()
     private val kl = object : KeyAdapter() {
         override fun keyPressed(k: KeyEvent) {
+<<<<<<< HEAD
             if (playing)
                 when (k.extendedKeyCode) {
                     0x44, 0x27 -> {
@@ -54,6 +55,16 @@ class GameView(app: App) : JFrame() {
                     }
                     else -> println(k.paramString())
                 }
+=======
+            if(playing)
+            when (k.extendedKeyCode) {
+                0x44, 0x27 -> { shiftX-=10; game.repaint() }
+                0x57, 0x26 -> { shiftY+=10; game.repaint() }
+                0x53, 0x28 -> { shiftY-=10; game.repaint() }
+                0x41, 0x25 -> { shiftX+=10; game.repaint() }
+                else -> println(k.paramString())
+            }
+>>>>>>> e7582d42ce85acb731b076e95c55d24ccb6b1ac8
         }
     }
 
