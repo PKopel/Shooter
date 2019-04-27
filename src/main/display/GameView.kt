@@ -1,12 +1,13 @@
 package main.display
 
 import main.App
-import main.back.Board
 import main.button
+import main.data.GameData.game
 import main.data.GameData.playing
 import main.data.GameData.shiftX
 import main.data.GameData.shiftY
 import main.data.StyleData
+import main.fillMap
 import main.run
 import java.awt.BorderLayout
 import java.awt.FlowLayout
@@ -35,10 +36,8 @@ class GameView(app: App) : JFrame() {
             }
         }
     }
-    private val game = MapView()
     private val kl = object : KeyAdapter() {
         override fun keyPressed(k: KeyEvent) {
-<<<<<<< HEAD
             if (playing)
                 when (k.extendedKeyCode) {
                     0x44, 0x27 -> {
@@ -55,21 +54,11 @@ class GameView(app: App) : JFrame() {
                     }
                     else -> println(k.paramString())
                 }
-=======
-            if(playing)
-            when (k.extendedKeyCode) {
-                0x44, 0x27 -> { shiftX-=10; game.repaint() }
-                0x57, 0x26 -> { shiftY+=10; game.repaint() }
-                0x53, 0x28 -> { shiftY-=10; game.repaint() }
-                0x41, 0x25 -> { shiftX+=10; game.repaint() }
-                else -> println(k.paramString())
-            }
->>>>>>> e7582d42ce85acb731b076e95c55d24ccb6b1ac8
         }
     }
 
     init {
-        Board.fillMap()
+        fillMap()
         back.addKeyListener(kl)
         play.addKeyListener(kl)
         add(game)
