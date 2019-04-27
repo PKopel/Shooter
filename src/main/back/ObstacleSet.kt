@@ -1,11 +1,10 @@
 package main.back
 
-import java.awt.Color
-
 class ObstacleSet(private val maxSize: Int=200) : AbstractSet<Rect>(){
+    private val data = AppData
     override var size = 0
     private val zero = Rect(0,0,0,0)
-    val player = Rect(240,240, 20,20, Color.BLUE)
+    val player = Rect(240,240, 20,20, data.player)
     private val elements = Array(maxSize){ zero }
     /*private val bounds = arrayOf(
             Rect(-500,-510,1500,10),
@@ -39,7 +38,7 @@ class ObstacleSet(private val maxSize: Int=200) : AbstractSet<Rect>(){
         return false
     }
 
-    public fun full() = size==maxSize
+    fun full() = size==maxSize
 
     inner class ObstacleIterator: Iterator<Rect>{
         private var i = -1

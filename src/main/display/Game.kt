@@ -1,6 +1,7 @@
 package main.display
 
 import main.back.Board
+import main.back.AppData
 import java.awt.Color
 import java.awt.Graphics
 import javax.swing.JPanel
@@ -38,13 +39,11 @@ class Game : JPanel() {
 
     override fun paintComponent(g: Graphics) {
         super.paintComponent(g)
-        println("painting")
-        //for (i in Board.map.indices) {
         for ((x, y, widthR, heightR, color) in Board.obstacles) {
-            //val (x, y, widthR, heightR, color) = Board.map[i]
             g.color = color
             when (color) {
-                Board.obstacles.player.color -> g.fillOval(x + shiftX, y + shiftY, widthR, heightR)
+                AppData.player -> g.fillOval(x + shiftX, y + shiftY, widthR, heightR)
+                AppData.shooters -> g.fillOval(x + shiftX, y + shiftY, widthR, heightR)
                 else -> g.fillRect(x + shiftX, y + shiftY, widthR, heightR)
             }
         }

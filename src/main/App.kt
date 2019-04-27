@@ -1,38 +1,27 @@
 package main
 
+import main.back.AppData
 import main.display.GameView
-import main.display.Settings
-import java.awt.Color
+import main.display.SettingsView
 import java.awt.FlowLayout
 import javax.swing.JFrame
 
 object App : JFrame() {
-    var theme = 0
-        set(value) {
-            background = when (value) {
-                0 -> Color.LIGHT_GRAY
-                1 -> Color.DARK_GRAY
-                2 -> Color.GRAY
-                else -> Color.LIGHT_GRAY
-            }
-            start.background = background
-            settings.background = background
-            exit.background = background
-            field = value
-        }
-    private val start = button("Start", background) {
+    private val data = AppData
+    private val start = button("Start", data.theme) {
         run(GameView(this), 700, 700,"Shooter")
         dispose()
     }
-    private val settings = button("Settings", background) {
-        run(Settings(this), 300, 100)
+    private val settings = button("Settings", data.theme) {
+        run(SettingsView(this), 300, 100)
         dispose()
     }
-    private val exit = button("Exit", background) {
+    private val exit = button("Exit", data.theme) {
         dispose()
     }
 
     init {
+        background= data.background
         layout = FlowLayout()
         add(start)
         add(settings)
