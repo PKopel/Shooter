@@ -1,9 +1,10 @@
 package main.back
 
+import main.data.StyleData
 import main.intersection
 import java.awt.Color
 
-data class Rect(var x: Int, var y: Int, val width: Int, val height: Int, val color: Color = AppData.obstacles) {
+data class Rect(var x: Int, var y: Int, val width: Int, val height: Int, var color: Color = StyleData.obstacles) {
 
     fun moveLeft() {
         x -= 10

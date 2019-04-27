@@ -4,6 +4,8 @@ import java.awt.Color
 import java.awt.event.ActionEvent
 import javax.swing.JButton
 import javax.swing.JFrame
+import javax.swing.JMenuItem
+import javax.swing.JRadioButtonMenuItem
 import javax.swing.SwingUtilities.invokeLater
 
 fun run(f: JFrame, width: Int, height: Int) {
@@ -22,6 +24,15 @@ fun run(f: JFrame, width: Int, height: Int, name: String) {
         f.setSize(width, height)
         f.isVisible = true
     }
+}
+
+fun radioMenuItem(text: String = "", background: Color = Color.LIGHT_GRAY,
+                  listener: (ActionEvent) -> Unit, selected: Boolean = false): JRadioButtonMenuItem{
+    val item = JRadioButtonMenuItem(text)
+    item.isSelected=selected
+    item.background=background
+    item.addActionListener(listener)
+    return item
 }
 
 fun button(text: String = "", background: Color = Color.LIGHT_GRAY, listener: (ActionEvent) -> Unit): JButton {

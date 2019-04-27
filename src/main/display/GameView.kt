@@ -2,8 +2,11 @@ package main.display
 
 import main.App
 import main.back.Board
-import main.back.AppData
+import main.data.StyleData
 import main.button
+import main.data.GameData.playing
+import main.data.GameData.shiftX
+import main.data.GameData.shiftY
 import main.run
 import java.awt.BorderLayout
 import java.awt.FlowLayout
@@ -14,7 +17,7 @@ import javax.swing.JFrame
 import javax.swing.JPanel
 
 class GameView(app: App) : JFrame() {
-    private val data = AppData
+    private val data = StyleData
     private val buttons = JPanel()
     private val back = button("Return", data.theme) {
         run(app, 300, 100, "Shooter")
@@ -32,16 +35,15 @@ class GameView(app: App) : JFrame() {
             }
         }
     }
-    private val game = Game()
-    private var playing = false
+    private val game = MapView()
     private val kl = object : KeyAdapter() {
         override fun keyPressed(k: KeyEvent) {
             if(playing)
             when (k.extendedKeyCode) {
-                0x44, 0x27 -> { game.shiftX-=10; game.repaint() }
-                0x57, 0x26 -> { game.shiftY+=10; game.repaint() }
-                0x53, 0x28 -> { game.shiftY-=10; game.repaint() }
-                0x41, 0x25 -> { game.shiftX+=10; game.repaint() }
+                0x44, 0x27 -> { shiftX-=10; game.repaint() }
+                0x57, 0x26 -> { shiftY+=10; game.repaint() }
+                0x53, 0x28 -> { shiftY-=10; game.repaint() }
+                0x41, 0x25 -> { shiftX+=10; game.repaint() }
                 else -> println(k.paramString())
             }
         }

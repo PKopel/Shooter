@@ -2,30 +2,34 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e5d9113c-abbb-4c88-a0ff-61877754a609" name="Default Changelist" comment="app data moved to new object">
-      <change afterPath="$PROJECT_DIR$/src/main/back/AppData.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/data/GameData.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/data/StyleData.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/display/MapView.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/shooter/main/App$exit$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shooter/main/App$exit$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/shooter/main/App$settings$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shooter/main/App$settings$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/shooter/main/App$start$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shooter/main/App$start$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/shooter/main/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shooter/main/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/shooter/main/UtilsKt$run$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shooter/main/UtilsKt$run$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/shooter/main/UtilsKt$run$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shooter/main/UtilsKt$run$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/shooter/main/UtilsKt.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shooter/main/UtilsKt.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/shooter/main/back/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shooter/main/back/Board.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/shooter/main/back/ObstacleSet$ObstacleIterator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shooter/main/back/ObstacleSet$ObstacleIterator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/shooter/main/back/ObstacleSet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shooter/main/back/ObstacleSet.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/shooter/main/back/Rect.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shooter/main/back/Rect.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/shooter/main/display/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shooter/main/display/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/shooter/main/display/Game.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/shooter/main/display/GameView$back$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shooter/main/display/GameView$back$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/shooter/main/display/GameView$kl$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shooter/main/display/GameView$kl$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/shooter/main/display/GameView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/shooter/main/display/GameView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/shooter/main/display/Settings$back$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/shooter/main/display/Settings$theme$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/shooter/main/display/Settings.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/App.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/App.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Utils.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Utils.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/back/AppData.kt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/back/Board.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/back/Board.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/back/ObstacleSet.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/back/ObstacleSet.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/back/Rect.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/back/Rect.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/display/Game.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/display/Game.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/display/Game.kt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/display/GameView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/display/GameView.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/display/Settings.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/display/SettingsView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/display/SettingsView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/display/SettingsView.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,20 +43,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/back/AppData.kt">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/data/StyleData.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="35" lean-forward="true" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
+            <state relative-caret-position="150">
+              <caret line="11" column="61" selection-start-line="11" selection-start-column="61" selection-end-line="11" selection-end-column="61" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/display/GameView.kt">
+        <entry file="file://$PROJECT_DIR$/src/main/data/GameData.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
+            <state relative-caret-position="555">
+              <caret line="39" selection-start-line="39" selection-end-line="39" />
+              <folding>
+                <element signature="e#19#85#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/display/MapView.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="18" column="62" selection-start-line="18" selection-start-column="62" selection-end-line="18" selection-end-column="62" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/back/Board.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="146">
+              <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -60,17 +85,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/display/SettingsView.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+            <state relative-caret-position="416">
+              <caret line="85" column="48" selection-start-line="85" selection-start-column="48" selection-end-line="85" selection-end-column="48" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/back/ObstacleSet.kt">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/App.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="40" column="4" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="4" />
+            <state relative-caret-position="300">
+              <caret line="25" column="26" lean-forward="true" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -78,11 +103,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/Utils.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="615">
-              <caret line="45" column="13" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="13" />
-              <folding>
-                <element signature="e#14#168#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="150">
+              <caret line="22" column="54" lean-forward="true" selection-start-line="22" selection-start-column="54" selection-end-line="22" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -93,9 +115,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
-        <option value="Kotlin Object" />
         <option value="Kotlin File" />
         <option value="Kotlin Class" />
+        <option value="Kotlin Object" />
       </list>
     </option>
   </component>
@@ -111,16 +133,20 @@
         <option value="$PROJECT_DIR$/src/test/OnstacleSet.kt" />
         <option value="$PROJECT_DIR$/src/test/SetTest.kt" />
         <option value="$PROJECT_DIR$/src/test/ObstacleSet.kt" />
-        <option value="$PROJECT_DIR$/src/main/Utils.kt" />
-        <option value="$PROJECT_DIR$/src/main/display/SettingsView.kt" />
-        <option value="$PROJECT_DIR$/src/main/display/GameView.kt" />
-        <option value="$PROJECT_DIR$/src/main/back/Board.kt" />
-        <option value="$PROJECT_DIR$/src/main/back/Rect.kt" />
-        <option value="$PROJECT_DIR$/src/main/display/Game.kt" />
         <option value="$PROJECT_DIR$/src/main/back/SettingsData.kt" />
+        <option value="$PROJECT_DIR$/src/main/back/Rect.kt" />
         <option value="$PROJECT_DIR$/src/main/back/AppData.kt" />
-        <option value="$PROJECT_DIR$/src/main/App.kt" />
+        <option value="$PROJECT_DIR$/src/main/data/PlayerData.kt" />
+        <option value="$PROJECT_DIR$/src/main/back/Board.kt" />
+        <option value="$PROJECT_DIR$/src/main/data/AppData.kt" />
+        <option value="$PROJECT_DIR$/src/main/data/GameData.kt" />
+        <option value="$PROJECT_DIR$/src/main/display/Game.kt" />
         <option value="$PROJECT_DIR$/src/main/back/ObstacleSet.kt" />
+        <option value="$PROJECT_DIR$/src/main/display/GameView.kt" />
+        <option value="$PROJECT_DIR$/src/main/data/StyleData.kt" />
+        <option value="$PROJECT_DIR$/src/main/Utils.kt" />
+        <option value="$PROJECT_DIR$/src/main/App.kt" />
+        <option value="$PROJECT_DIR$/src/main/display/SettingsView.kt" />
       </list>
     </option>
   </component>
@@ -135,6 +161,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -165,6 +192,13 @@
               <item name="shooter" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="shooter" type="b2602c69:ProjectViewProjectNode" />
+              <item name="shooter" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="display" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -172,7 +206,6 @@
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -296,12 +329,26 @@
       <workItem from="1556286307464" duration="5310000" />
       <workItem from="1556295294363" duration="308000" />
       <workItem from="1556296117891" duration="52000" />
-      <workItem from="1556361854255" duration="2121000" />
+      <workItem from="1556361854255" duration="2231000" />
+      <workItem from="1556364215072" duration="586000" />
+      <workItem from="1556364901374" duration="1601000" />
+      <workItem from="1556366601604" duration="634000" />
+      <workItem from="1556376473579" duration="2753000" />
+      <workItem from="1556379331841" duration="746000" />
+      <workItem from="1556380233786" duration="776000" />
     </task>
+    <task id="LOCAL-00001" summary="app data moved to new object">
+      <created>1556364001648</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1556364001649</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38192000" />
+    <option name="totallyTimeSpent" value="45398000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -316,7 +363,7 @@
     <frame x="54" y="24" width="1347" height="853" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1734459" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18726017" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -325,16 +372,16 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3287858" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.328125" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32742155" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Docker" order="6" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3287858" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.3287858" />
-      <window_info active="true" anchor="bottom" id="Messages" order="11" visible="true" weight="0.3287858" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.3287858" />
       <window_info anchor="bottom" id="TODO" order="12" weight="0.3287858" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -409,69 +456,76 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/Utils.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="45" column="13" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="13" />
-          <folding>
-            <element signature="e#14#168#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/back/Rect.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="5" column="114" selection-start-line="5" selection-start-column="114" selection-end-line="5" selection-end-column="114" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/display/Game.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="615">
-          <caret line="45" column="84" selection-start-line="45" selection-start-column="84" selection-end-line="45" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/back/Board.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/back/AppData.kt">
-      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
-          <caret line="9" column="35" lean-forward="true" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/App.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/display/GameView.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/display/SettingsView.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+        <state relative-caret-position="30">
+          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/back/ObstacleSet.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="40" column="4" selection-start-line="40" selection-start-column="4" selection-end-line="40" selection-end-column="4" />
+        <state relative-caret-position="30">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/data/GameData.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
+          <folding>
+            <element signature="e#19#85#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/display/MapView.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="18" column="62" selection-start-line="18" selection-start-column="62" selection-end-line="18" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/Utils.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="22" column="54" lean-forward="true" selection-start-line="22" selection-start-column="54" selection-end-line="22" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/back/Board.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/App.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="25" column="26" lean-forward="true" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/display/SettingsView.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="85" column="48" selection-start-line="85" selection-start-column="48" selection-end-line="85" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/data/StyleData.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="11" column="61" selection-start-line="11" selection-start-column="61" selection-end-line="11" selection-end-column="61" />
         </state>
       </provider>
     </entry>
