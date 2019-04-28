@@ -3,16 +3,31 @@ package main.data
 import main.back.MapObjectSet
 import main.back.Missiles
 import main.back.Player
-import main.display.MapView
+import main.data.ViewData.game
+import main.data.ViewData.view
 import kotlin.concurrent.timer
 
 object GameData {
 
-    val player = Player(300, 300, 20, 20)
+    fun reset(){
+        damage = 0
+        shiftY = 0
+        shiftX = 0
+        player = Player()
+        bufferX = 0
+        bufferY = 0
+        playing = false
+    }
+
+    var player = Player()
+    var damage = 0
+        set(value) {
+            field = value
+            if (value >= 10) playing = false
+            game.repaint()
+        }
     val objects = MapObjectSet()
     val missiles = Missiles()
-    val game = MapView()
-
     private var bufferX = 0
     var shiftX = 0
         set(value) {
@@ -37,11 +52,21 @@ object GameData {
         }
 
     var playing = false
+        set(value) {
+            if (damage < 10) {
+                if (value) view.play.text = StringData.stop
+                else view.play.text = StringData.play
+                field = value
+            } else {
+                view.play.text = StringData.lost
+                field = false
+            }
+        }
 
     init {
 
         var time = 0
-        timer("Moves", true, period = 5) {
+        timer( daemon = true, period = 5) {
             if (playing) {
                 synchronized(missiles) {
                     for (m in missiles) m.move()
@@ -51,7 +76,6 @@ object GameData {
                         for (s in objects.shooters) s.shoot()
                         time = 0
                     }
-                    missiles.clean()
                 }
                 game.repaint()
             }

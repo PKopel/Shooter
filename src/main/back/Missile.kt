@@ -15,14 +15,15 @@ data class Missile(override var x: Int,
     override val width: Int = 2
     private var range = 300
 
-    private fun canMove(new: Missile): Boolean{
+    @Suppress("ReplaceCallWithBinaryOperator")
+    private fun canMove(new: Missile): Boolean {
         return when {
             objects.contains(new) -> {
                 GameData.missiles.remove(this)
                 false
             }
-            new.equals(player) -> {
-                println("hit")
+            new.equals(player) && this.color== Color.BLACK -> {
+                player.hit()
                 GameData.missiles.remove(this)
                 false
             }
@@ -31,42 +32,26 @@ data class Missile(override var x: Int,
     }
 
     fun move(): Boolean {
-        return if(range>0) {
+        return if (range > 0) {
             range--
             when (direction) {
-                Down -> {
-                    if (!objects.contains(Missile(x, y - 1))) {
-                        y--
+                Down -> if (canMove(Missile(x, y - 1,color = color))) {
+                    y--
+                    true
+                } else false
+                Up -> if (canMove(Missile(x, y + 1,color = color))) {
+                    y++
+                    true
+                } else false
+                Left -> if (canMove(Missile(x - 1, y,color = color))) {
+                    x--
+                    true
+                } else false
+                Right ->
+                    if (canMove(Missile(x + 1, y,color = color))) {
+                        x++
                         true
-                    } else {
-                        GameData.missiles.remove(this)
-                        false
-                    }
-                }
-                Up -> {
-                    if (!objects.contains(Missile(x, y + 1))) {
-                        y++
-                        true
-                    } else {
-                        GameData.missiles.remove(this)
-                        false
-                    }
-                }
-                Left -> {
-                    if (!objects.contains(Missile(x - 1, y))) {
-                        x--
-                        true
-                    } else {
-                        GameData.missiles.remove(this)
-                        false
-                    }
-                }
-                Right -> {
-                        if(canMove(Missile(x+1,y))){
-                            x++
-                            true
-                        } else false
-                }
+                    } else false
             }
         } else {
             GameData.missiles.remove(this)
@@ -75,8 +60,8 @@ data class Missile(override var x: Int,
     }
 
     override fun equals(other: Any?): Boolean {
-        return if (other is MapObject) other.x..(other.x + other.width) contains this.x+1 &&
-                other.y..(other.y + other.height) contains this.y+1
+        return if (other is MapObject) other.x..(other.x + other.width) contains this.x + 1 &&
+                other.y..(other.y + other.height) contains this.y + 1
         else false
     }
 
