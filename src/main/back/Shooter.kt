@@ -1,6 +1,8 @@
 package main.back
 
+import main.contains
 import main.data.GameData
+import main.data.GameData.missiles
 import main.data.StyleData
 import main.intersection
 import java.awt.Color
@@ -9,39 +11,43 @@ data class Shooter(override var x: Int,
                    override var y: Int,
                    override val width: Int = 21,
                    override val height: Int = 21,
-                   override var color: Color = StyleData.shooters): MapObject() {
+                   override var color: Color = StyleData.shooters) : MapObject() {
+    private val visible: Boolean
+        get() = 0..700 contains x + GameData.shiftX &&
+                0..700 contains y + GameData.shiftY
 
-    fun xCoords(): IntArray=intArrayOf(
+    fun xCoords(): IntArray = intArrayOf(
             x + GameData.shiftX,
-            x+width/3 + GameData.shiftX,
-            x+2*width/3 + GameData.shiftX,
-            x+width + GameData.shiftX,
-            x+width + GameData.shiftX,
-            x+2*width/3 + GameData.shiftX,
-            x+width/3 + GameData.shiftX,
+            x + width / 3 + GameData.shiftX,
+            x + 2 * width / 3 + GameData.shiftX,
+            x + width + GameData.shiftX,
+            x + width + GameData.shiftX,
+            x + 2 * width / 3 + GameData.shiftX,
+            x + width / 3 + GameData.shiftX,
             x + GameData.shiftX)
 
     fun yCoords(): IntArray = intArrayOf(
-            y+height/3 + GameData.shiftY,
+            y + height / 3 + GameData.shiftY,
             y + GameData.shiftY,
             y + GameData.shiftY,
-            y+height/3 + GameData.shiftY,
-            y+2*height/3 + GameData.shiftY,
-            y+height + GameData.shiftY,
-            y+height + GameData.shiftY,
-            y+2*height/3 + GameData.shiftY)
+            y + height / 3 + GameData.shiftY,
+            y + 2 * height / 3 + GameData.shiftY,
+            y + height + GameData.shiftY,
+            y + height + GameData.shiftY,
+            y + 2 * height / 3 + GameData.shiftY)
 
-    fun shoot(missiles: MutableList<Missile>) {
-        missiles.addAll(listOf(
-                Missile(x+width/2, y, Direction.Up),
-                Missile(x+width/2, y+height, Direction.Down),
-                Missile(x, y+height/2, Direction.Left),
-                Missile(x+width, y+height/2, Direction.Right)
-        ))
+    fun shoot() {
+        if (visible)
+            synchronized(missiles) {
+                missiles.put(Missile(x + width / 2, y - 1, Direction.Up))
+                missiles.put(Missile(x + width / 2, y + height + 1, Direction.Down))
+                missiles.put(Missile(x - 2, y + height / 2, Direction.Left))
+                missiles.put(Missile(x + width, y + height / 2, Direction.Right))
+            }
     }
 
     override fun equals(other: Any?): Boolean {
-        return if(other is MapObject) this.x..(this.x + this.width) intersection other.x..(other.x + other.width) != null &&
+        return if (other is MapObject) this.x..(this.x + this.width) intersection other.x..(other.x + other.width) != null &&
                 this.y..(this.y + this.height) intersection other.y..(other.y + other.height) != null
         else false
     }

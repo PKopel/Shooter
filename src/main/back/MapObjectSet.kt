@@ -1,6 +1,7 @@
 package main.back
 
 import main.data.GameData.player
+import java.awt.Color
 
 class MapObjectSet(private val maxObst: Int=200, private val maxSht: Int=20){
     var sizeO = 0
@@ -27,17 +28,31 @@ class MapObjectSet(private val maxObst: Int=200, private val maxSht: Int=20){
             true
         } else false
     }
-    /*
-    fun remove(element: MapObject): Boolean{
+
+    fun remove(shooter: Shooter): Boolean{
         var found = false
-        for(i in 0 until objects.size){
-            if(objects[i]==element)
+        for(i in 0 until shooters.size){
+            if(shooters[i]===shooter)
                 found = true
-            if(found) objects[i]=objects[i+1]
+            if(found) shooters[i] = try{
+                shooters[i+1]
+            } catch (e: IndexOutOfBoundsException){
+                Shooter(0,0,0,0)
+            }
         }
         return found
     }
-*/
+
+    @Suppress("ReplaceCallWithBinaryOperator")
+    fun contains(missile: Missile): Boolean{
+        for(obst in obstacles) if(missile.equals(obst)) return true
+        for(sht in shooters) if(missile.equals(sht)){
+            if(missile.color== Color.DARK_GRAY)
+            return true
+        }
+        return false
+    }
+
     fun contains(element: MapObject): Boolean{
         for(obst in obstacles) if(obst == element) return true
         for(sht in shooters) if(sht == element) return true
