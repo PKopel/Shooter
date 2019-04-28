@@ -3,6 +3,7 @@ package main.display
 import main.App
 import main.button
 import main.data.GameData
+import main.data.GameData.damage
 import main.data.GameData.player
 import main.data.GameData.playing
 import main.data.GameData.shiftX
@@ -24,7 +25,8 @@ import javax.swing.JPanel
 class GameView : JFrame() {
     private val buttons = JPanel()
     private val back = button(StringData.ret, theme) {
-        playing = false
+        if(damage>=10) GameData.reset()
+        else playing = false
         run(App, 150, 150, StringData.appName)
         dispose()
     }
@@ -40,6 +42,13 @@ class GameView : JFrame() {
         }
     }
     private val kl = object : KeyAdapter() {
+
+        override fun keyReleased(k: KeyEvent) {
+            if(k.extendedKeyCode == 0xa ) {
+                player.shoot()
+            }
+        }
+
         override fun keyPressed(k: KeyEvent) {
             if (playing)
                 when (k.extendedKeyCode) {
@@ -54,9 +63,6 @@ class GameView : JFrame() {
                     }
                     0x41, 0x25 -> {
                         shiftX += 10; game.repaint()
-                    }
-                    0xa -> {
-                        player.shoot()
                     }
                     0x10 -> player.direction=player.direction.next()
                     else -> println(k.paramString())
