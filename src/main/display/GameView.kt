@@ -53,7 +53,7 @@ class GameView(app: App) : JFrame() {
                     0x41, 0x25 -> {
                         shiftX += 10; game.repaint()
                     }
-                    0x20 -> { player.shoot() }
+                    0xa -> { player.shoot() }
                     else -> println(k.paramString())
                 }
         }

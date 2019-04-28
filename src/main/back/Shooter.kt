@@ -39,8 +39,8 @@ data class Shooter(override var x: Int,
     fun shoot() {
         if (visible)
             synchronized(missiles) {
-                missiles.put(Missile(x + width / 2, y - 1, Direction.Up))
-                missiles.put(Missile(x + width / 2, y + height + 1, Direction.Down))
+                missiles.put(Missile(x + width / 2, y - 1, Direction.Down))
+                missiles.put(Missile(x + width / 2, y + height, Direction.Up))
                 missiles.put(Missile(x - 2, y + height / 2, Direction.Left))
                 missiles.put(Missile(x + width, y + height / 2, Direction.Right))
             }

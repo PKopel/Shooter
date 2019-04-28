@@ -1,7 +1,7 @@
 package main.back
 
 import main.data.GameData.player
-import java.awt.Color
+import main.data.StyleData
 
 class MapObjectSet(private val maxObst: Int=200, private val maxSht: Int=20){
     var sizeO = 0
@@ -47,7 +47,10 @@ class MapObjectSet(private val maxObst: Int=200, private val maxSht: Int=20){
     fun contains(missile: Missile): Boolean{
         for(obst in obstacles) if(missile.equals(obst)) return true
         for(sht in shooters) if(missile.equals(sht)){
-            if(missile.color== Color.DARK_GRAY)
+            if(missile.color == StyleData.pMissile){
+                println("hit")
+                remove(sht)
+            }
             return true
         }
         return false

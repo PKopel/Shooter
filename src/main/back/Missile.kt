@@ -4,6 +4,7 @@ import main.back.MapObject.Direction.*
 import main.contains
 import main.data.GameData
 import main.data.GameData.objects
+import main.data.GameData.player
 import java.awt.Color
 
 data class Missile(override var x: Int,
@@ -14,27 +15,39 @@ data class Missile(override var x: Int,
     override val width: Int = 2
     private var range = 300
 
+    private fun canMove(new: Missile): Boolean{
+        return when {
+            objects.contains(new) -> {
+                GameData.missiles.remove(this)
+                false
+            }
+            new.equals(player) -> {
+                println("hit")
+                GameData.missiles.remove(this)
+                false
+            }
+            else -> true
+        }
+    }
 
     fun move(): Boolean {
         return if(range>0) {
             range--
             when (direction) {
-                Up -> {
+                Down -> {
                     if (!objects.contains(Missile(x, y - 1))) {
                         y--
                         true
                     } else {
-                        println(direction)
                         GameData.missiles.remove(this)
                         false
                     }
                 }
-                Down -> {
+                Up -> {
                     if (!objects.contains(Missile(x, y + 1))) {
                         y++
                         true
                     } else {
-                        println(direction)
                         GameData.missiles.remove(this)
                         false
                     }
@@ -49,13 +62,10 @@ data class Missile(override var x: Int,
                     }
                 }
                 Right -> {
-                    if (!objects.contains(Missile(x + 1, y))) {
-                        x++
-                        true
-                    } else {
-                        GameData.missiles.remove(this)
-                        false
-                    }
+                        if(canMove(Missile(x+1,y))){
+                            x++
+                            true
+                        } else false
                 }
             }
         } else {

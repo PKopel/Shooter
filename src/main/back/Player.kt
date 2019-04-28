@@ -3,6 +3,7 @@ package main.back
 import main.data.GameData.missiles
 import main.data.GameData.objects
 import main.data.StyleData
+import main.data.StyleData.pMissile
 import main.intersection
 import java.awt.Color
 
@@ -12,7 +13,7 @@ data class Player(override var x: Int,
                   override val height: Int,
                   override var color: Color = StyleData.player) : MapObject(){
 
-    private var direction = Direction.Up
+    private var direction = Direction.Down
 
     fun moveLeft():Boolean {
         return if (objects.contains(Obstacle(x - 10, y, width, height))) false
@@ -52,7 +53,7 @@ data class Player(override var x: Int,
 
     fun shoot() {
         synchronized(missiles) {
-            missiles.put(Missile(x+width/2, y+height/2, direction, Color.darkGray))
+            missiles.put(Missile(x+width/2, y+height/2, direction, pMissile))
         }
     }
 
