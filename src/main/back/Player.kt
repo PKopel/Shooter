@@ -1,5 +1,6 @@
 package main.back
 
+import main.data.GameData.missiles
 import main.data.GameData.objects
 import main.data.StyleData
 import main.intersection
@@ -26,7 +27,7 @@ data class Player(override var x: Int,
         return if (objects.contains(Obstacle(x + 10, y, width, height))) false
         else {
             x += 10
-            direction = Direction.Left
+            direction = Direction.Right
             true
         }
     }
@@ -35,7 +36,7 @@ data class Player(override var x: Int,
         return if (objects.contains(Obstacle(x, y + 10, width, height))) false
         else {
             y += 10
-            direction = Direction.Left
+            direction = Direction.Up
             true
         }
     }
@@ -44,13 +45,15 @@ data class Player(override var x: Int,
         return if (objects.contains(Obstacle(x, y  - 10, width, height))) false
         else {
             y -= 10
-            direction = Direction.Left
+            direction = Direction.Down
             true
         }
     }
 
-    fun shoot(missiles: Missiles) {
-        missiles.add(Missile(x, y, direction, Color.darkGray))
+    fun shoot() {
+        synchronized(missiles) {
+            missiles.put(Missile(x+width/2, y+height/2, direction, Color.darkGray))
+        }
     }
 
     override fun equals(other: Any?): Boolean {

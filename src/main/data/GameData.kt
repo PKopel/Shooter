@@ -4,14 +4,13 @@ import main.back.MapObjectSet
 import main.back.Missiles
 import main.back.Player
 import main.display.MapView
-import java.util.*
 import kotlin.concurrent.timer
 
 object GameData {
 
     val player = Player(300, 300, 20, 20)
     val objects = MapObjectSet()
-    val missiles = Collections.synchronizedList(Missiles())
+    val missiles = Missiles()
     val game = MapView()
 
     private var bufferX = 0
@@ -42,17 +41,20 @@ object GameData {
     init {
 
         var time = 0
-        timer("Moves",true,period = 5){
-            synchronized(missiles) {
-                for (m in missiles) m.move()
-                if (time < 300) {
-                    time += 5
-                } else {
-                    for (s in objects.shooters) s.shoot(missiles)
-                    time = 0
+        timer("Moves", true, period = 5) {
+            if (playing) {
+                synchronized(missiles) {
+                    for (m in missiles) m.move()
+                    if (time < 300) {
+                        time += 5
+                    } else {
+                        for (s in objects.shooters) s.shoot()
+                        time = 0
+                    }
+                    missiles.clean()
                 }
+                game.repaint()
             }
-            game.repaint()
         }
     }
 }

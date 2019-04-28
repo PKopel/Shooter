@@ -3,6 +3,7 @@ package main.display
 import main.App
 import main.button
 import main.data.GameData.game
+import main.data.GameData.player
 import main.data.GameData.playing
 import main.data.GameData.shiftX
 import main.data.GameData.shiftY
@@ -52,6 +53,7 @@ class GameView(app: App) : JFrame() {
                     0x41, 0x25 -> {
                         shiftX += 10; game.repaint()
                     }
+                    0x20 -> { player.shoot() }
                     else -> println(k.paramString())
                 }
         }
