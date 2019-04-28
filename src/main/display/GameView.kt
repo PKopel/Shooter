@@ -1,13 +1,19 @@
 package main.display
 
 import main.App
+import main.back.Player
 import main.button
-import main.data.GameData.game
+import main.data.GameData.damage
+import main.data.GameData.missiles
+import main.data.GameData.objects
 import main.data.GameData.player
 import main.data.GameData.playing
 import main.data.GameData.shiftX
 import main.data.GameData.shiftY
+import main.data.StringData
 import main.data.StyleData
+import main.data.StyleData.theme
+import main.data.ViewData.game
 import main.fillMap
 import main.run
 import java.awt.BorderLayout
@@ -18,23 +24,25 @@ import javax.swing.JButton
 import javax.swing.JFrame
 import javax.swing.JPanel
 
-class GameView(app: App) : JFrame() {
-    private val data = StyleData
+class GameView : JFrame() {
     private val buttons = JPanel()
-    private val back = button("Return", data.theme) {
-        run(app, 300, 100, "Shooter")
+    private val back = button(StringData.ret, theme) {
+        playing = false
+        run(App, 150, 150, StringData.appName)
         dispose()
     }
-    private val play = button("Play", data.theme) {
-        when (playing) {
-            true -> {
-                playing = false
-                (it.source as JButton).text = "Play"
+    val play = button(StringData.play, theme) {
+        val play = (it.source as JButton)
+        when (play.text) {
+            StringData.lost,StringData.won -> {
+                damage = 0
+                player = Player()
+                objects.clear()
+                missiles.clear()
+                fillMap()
+                play.text = StringData.play
             }
-            false -> {
-                playing = true
-                (it.source as JButton).text = "Stop"
-            }
+            else -> playing = !playing
         }
     }
     private val kl = object : KeyAdapter() {
@@ -53,7 +61,10 @@ class GameView(app: App) : JFrame() {
                     0x41, 0x25 -> {
                         shiftX += 10; game.repaint()
                     }
-                    0xa -> { player.shoot() }
+                    0xa -> {
+                        player.shoot()
+                    }
+                    0x10 -> player.direction=player.direction.next()
                     else -> println(k.paramString())
                 }
         }
@@ -64,7 +75,7 @@ class GameView(app: App) : JFrame() {
         back.addKeyListener(kl)
         play.addKeyListener(kl)
         add(game)
-        buttons.background = data.background
+        buttons.background = StyleData.background
         buttons.layout = FlowLayout()
         buttons.add(play)
         buttons.add(back)

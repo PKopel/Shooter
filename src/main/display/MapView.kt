@@ -27,7 +27,9 @@ class MapView : JPanel() {
         }
         g.color = StyleData.player
         val (x, y, w, h) = player
-        g.fillOval(x + shiftX, y + shiftY, w, h)
+        val d = GameData.damage
+        g.drawOval(x + shiftX, y + shiftY, w, h)
+        g.fillOval(x + shiftX + d, y + shiftY + d, w - 2 * d, h - 2 * d)
     }
 
     init {

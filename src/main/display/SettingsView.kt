@@ -3,6 +3,7 @@ package main.display
 import main.App
 import main.button
 import main.data.GameData.player
+import main.data.StringData
 import main.data.StyleData
 import main.radioMenuItem
 import main.run
@@ -17,12 +18,12 @@ import javax.swing.JMenuItem
 class SettingsView : JFrame() {
     private val style = StyleData
     private val bar = JMenuBar()
-    private val options = JMenu("Options")
+    private val options = JMenu(StringData.opts[0])
     private val menus = arrayOf(
-            JMenu("Player color"),
-            JMenu("Obstacles color"),
-            JMenu("Shooters color"),
-            JMenu("Theme")
+            JMenu(StringData.opts[1]),
+            JMenu(StringData.opts[2]),
+            JMenu(StringData.opts[3]),
+            JMenu(StringData.opts[4])
     )
 
     private fun pListener(e: ActionEvent) {
@@ -86,8 +87,8 @@ class SettingsView : JFrame() {
             radioMenuItem("Yellow", Color.YELLOW, ::themeListener)
     )
 
-    private val back = button("Return", style.theme) {
-        run(App(), 150, 150, "Shooter")
+    private val back = button(StringData.ret, style.theme) {
+        run(App, 150, 150, StringData.appName)
         dispose()
     }
 

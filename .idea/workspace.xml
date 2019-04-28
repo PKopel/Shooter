@@ -2,14 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e5d9113c-abbb-4c88-a0ff-61877754a609" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/data/StringData.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/data/ViewData.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/App.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/App.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/back/MapObject.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/back/MapObject.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/back/MapObjectSet.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/back/MapObjectSet.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/back/Missile.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/back/Missile.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/back/Missiles.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/back/Missiles.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/back/Player.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/back/Player.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/back/Shooter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/back/Shooter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/data/StyleData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/data/StyleData.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/data/GameData.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/data/GameData.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/display/GameView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/display/GameView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/display/MapView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/display/MapView.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/display/SettingsView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/display/SettingsView.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,73 +43,19 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/display/GameView.kt">
+        <entry file="file://$PROJECT_DIR$/src/main/data/StringData.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="55" column="20" selection-start-line="55" selection-start-column="20" selection-end-line="55" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/back/Shooter.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="42" column="62" lean-forward="true" selection-start-line="42" selection-start-column="62" selection-end-line="42" selection-end-column="62" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/back/Player.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="55" column="74" lean-forward="true" selection-start-line="55" selection-start-column="74" selection-end-line="55" selection-end-column="74" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/data/GameData.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="524">
-              <caret line="60" selection-start-line="60" selection-end-line="60" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/App.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
+            <state relative-caret-position="150">
+              <caret line="10" column="91" selection-start-line="10" selection-start-column="91" selection-end-line="10" selection-end-column="91" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/back/Missile.kt">
+        <entry file="file://$PROJECT_DIR$/src/main/display/SettingsView.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="18" column="15" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/back/MapObjectSet.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="344">
-              <caret line="50" column="50" selection-start-line="50" selection-start-column="50" selection-end-line="50" selection-end-column="50" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/data/StyleData.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="35" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
+            <state relative-caret-position="135">
+              <caret line="22" column="38" lean-forward="true" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -115,10 +66,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
-        <option value="Kotlin Object" />
         <option value="Kotlin Class" />
         <option value="Kotlin Interface" />
         <option value="Kotlin File" />
+        <option value="Kotlin Object" />
       </list>
     </option>
   </component>
@@ -143,8 +94,6 @@
         <option value="$PROJECT_DIR$/src/main/data/PlayerData.kt" />
         <option value="$PROJECT_DIR$/src/main/data/AppData.kt" />
         <option value="$PROJECT_DIR$/src/main/display/Game.kt" />
-        <option value="$PROJECT_DIR$/src/main/display/SettingsView.kt" />
-        <option value="$PROJECT_DIR$/src/main/App.kt" />
         <option value="$PROJECT_DIR$/src/main/back/Rect.kt" />
         <option value="$PROJECT_DIR$/src/main/back/ShooterSet.kt" />
         <option value="$PROJECT_DIR$/src/main/back/MissileSet.kt" />
@@ -153,17 +102,22 @@
         <option value="$PROJECT_DIR$/src/main/back/ObjectSet.kt" />
         <option value="$PROJECT_DIR$/src/main/back/ObstacleSet.kt" />
         <option value="$PROJECT_DIR$/src/main/back/Obstacle.kt" />
-        <option value="$PROJECT_DIR$/src/main/back/MapObject.kt" />
         <option value="$PROJECT_DIR$/src/main/Utils.kt" />
+        <option value="$PROJECT_DIR$/src/main/data/StyleData.kt" />
+        <option value="$PROJECT_DIR$/src/main/back/Shooter.kt" />
+        <option value="$PROJECT_DIR$/src/main/data/Data.kt" />
+        <option value="$PROJECT_DIR$/src/main/data/ViewData.kt" />
         <option value="$PROJECT_DIR$/src/main/display/MapView.kt" />
         <option value="$PROJECT_DIR$/src/main/back/Missiles.kt" />
+        <option value="$PROJECT_DIR$/src/main/back/Missile.kt" />
+        <option value="$PROJECT_DIR$/src/main/back/MapObject.kt" />
         <option value="$PROJECT_DIR$/src/main/data/GameData.kt" />
         <option value="$PROJECT_DIR$/src/main/display/GameView.kt" />
-        <option value="$PROJECT_DIR$/src/main/data/StyleData.kt" />
-        <option value="$PROJECT_DIR$/src/main/back/MapObjectSet.kt" />
         <option value="$PROJECT_DIR$/src/main/back/Player.kt" />
-        <option value="$PROJECT_DIR$/src/main/back/Shooter.kt" />
-        <option value="$PROJECT_DIR$/src/main/back/Missile.kt" />
+        <option value="$PROJECT_DIR$/src/main/App.kt" />
+        <option value="$PROJECT_DIR$/src/main/back/MapObjectSet.kt" />
+        <option value="$PROJECT_DIR$/src/main/data/StringData.kt" />
+        <option value="$PROJECT_DIR$/src/main/display/SettingsView.kt" />
       </list>
     </option>
   </component>
@@ -210,6 +164,13 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="data" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Shooter" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Shooter" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="display" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -234,6 +195,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="main.data" />
       <recent name="main.back" />
       <recent name="main.display" />
     </key>
@@ -350,7 +312,7 @@
       <workItem from="1556448925993" duration="322000" />
       <workItem from="1556449376707" duration="289000" />
       <workItem from="1556449780615" duration="2823000" />
-      <workItem from="1556454328266" duration="1730000" />
+      <workItem from="1556454328266" duration="6305000" />
     </task>
     <task id="LOCAL-00001" summary="app data moved to new object">
       <created>1556364001648</created>
@@ -373,11 +335,18 @@
       <option name="project" value="LOCAL" />
       <updated>1556381407788</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="almost finished hit mechanism">
+      <created>1556456152745</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1556456152745</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63552000" />
+    <option name="totallyTimeSpent" value="68127000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -392,7 +361,7 @@
     <frame x="67" y="25" width="1613" height="1025" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2156988" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2156988" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -401,7 +370,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.328125" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3236607" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3236607" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -410,7 +379,7 @@
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Terminal" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.3287858" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.32742155" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32700893" />
       <window_info anchor="bottom" id="TODO" order="12" weight="0.3287858" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -433,7 +402,8 @@
     <MESSAGE value="app data moved to new object" />
     <MESSAGE value="app data moved to separate package, created settings view" />
     <MESSAGE value="add shooters an missiles, split player and odstacles definition, change set of obstacles to set of all objects" />
-    <option name="LAST_COMMIT_MESSAGE" value="add shooters an missiles, split player and odstacles definition, change set of obstacles to set of all objects" />
+    <MESSAGE value="almost finished hit mechanism" />
+    <option name="LAST_COMMIT_MESSAGE" value="almost finished hit mechanism" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="antWorkspaceConfiguration">
@@ -450,13 +420,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/back/Shape.kt" />
-    <entry file="file://$PROJECT_DIR$/src/main/display/SettingsView.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="85" column="48" selection-start-line="85" selection-start-column="48" selection-end-line="85" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-147">
@@ -468,59 +431,10 @@
     <entry file="file://$PROJECT_DIR$/src/main/back/ObjectSet.kt" />
     <entry file="file://$PROJECT_DIR$/src/main/back/ShooterSet.kt" />
     <entry file="file://$PROJECT_DIR$/src/main/back/Obstacle.kt" />
-    <entry file="file://$PROJECT_DIR$/src/main/back/Missiles.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="8" column="65" selection-start-line="8" selection-start-column="65" selection-end-line="8" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/display/MapView.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="25" column="26" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/test/SetTest.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="14" lean-forward="true" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/Utils.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="33" selection-start-line="33" selection-end-line="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/data/GameData.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
-          <caret line="60" selection-start-line="60" selection-end-line="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/App.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/display/GameView.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="55" column="20" selection-start-line="55" selection-start-column="20" selection-end-line="55" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/back/MapObject.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="15" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
         </state>
       </provider>
     </entry>
@@ -531,31 +445,120 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/back/MapObjectSet.kt">
+    <entry file="file://$PROJECT_DIR$/src/main/data/Data.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="50" column="50" selection-start-line="50" selection-start-column="50" selection-end-line="50" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/back/Player.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="55" column="74" lean-forward="true" selection-start-line="55" selection-start-column="74" selection-end-line="55" selection-end-column="74" />
+        <state relative-caret-position="60">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/back/Shooter.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
+        <state relative-caret-position="555">
           <caret line="42" column="62" lean-forward="true" selection-start-line="42" selection-start-column="62" selection-end-line="42" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/data/ViewData.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="33" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
+          <folding>
+            <element signature="e#19#108#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/back/Missiles.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/back/Missile.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="18" column="15" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
+        <state relative-caret-position="405">
+          <caret line="50" column="62" selection-start-line="50" selection-start-column="62" selection-end-line="50" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/back/MapObject.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="15" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/data/GameData.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="e#19#191#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/display/GameView.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="43" column="43" selection-start-line="43" selection-start-column="43" selection-end-line="43" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/back/Player.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="855">
+          <caret line="57" column="8" selection-start-line="57" selection-start-column="8" selection-end-line="57" selection-end-column="8" />
+          <folding>
+            <element signature="e#19#230#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/display/MapView.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="24" column="27" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/App.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="33" column="45" selection-start-line="33" selection-start-column="45" selection-end-line="33" selection-end-column="45" />
+          <folding>
+            <element signature="e#14#147#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/back/MapObjectSet.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="35" column="17" lean-forward="true" selection-start-line="35" selection-start-column="17" selection-end-line="35" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/Utils.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/data/StringData.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="91" selection-start-line="10" selection-start-column="91" selection-end-line="10" selection-end-column="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/display/SettingsView.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="22" column="38" lean-forward="true" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="38" />
         </state>
       </provider>
     </entry>
