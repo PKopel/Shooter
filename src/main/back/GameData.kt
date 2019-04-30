@@ -1,21 +1,21 @@
-package main.data
+package main.back
 
-import main.back.MapObjectSet
-import main.back.Missiles
-import main.back.Player
+import main.data.StringData
 import main.data.ViewData.game
 import main.data.ViewData.view
 import kotlin.concurrent.timer
 
 object GameData {
 
-    fun reset(){
+    fun reset() {
         damage = 0
         shiftY = 0
         shiftX = 0
         player = Player()
         bufferX = 0
         bufferY = 0
+        objects.clear()
+        objects.fillMap()
         playing = false
     }
 
@@ -64,9 +64,9 @@ object GameData {
         }
 
     init {
-
+        objects.fillMap()
         var time = 0
-        timer( daemon = true, period = 5) {
+        timer(daemon = true, period = 5) {
             if (playing) {
                 synchronized(missiles) {
                     for (m in missiles) m.move()

@@ -1,8 +1,7 @@
 package main.back
 
 import main.contains
-import main.data.GameData
-import main.data.GameData.missiles
+import main.back.GameData.missiles
 import main.data.StyleData
 import main.intersection
 import java.awt.Color
@@ -12,9 +11,10 @@ data class Shooter(override var x: Int,
                    override val width: Int = 21,
                    override val height: Int = 21,
                    override var color: Color = StyleData.shooters) : MapObject() {
+
     private val visible: Boolean
-        get() = 0..700 contains x + GameData.shiftX &&
-                0..700 contains y + GameData.shiftY
+        get() = -10..700 contains x + GameData.shiftX &&
+                -10..700 contains y + GameData.shiftY
 
     fun xCoords(): IntArray = intArrayOf(
             x + GameData.shiftX,

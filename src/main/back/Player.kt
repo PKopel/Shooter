@@ -1,8 +1,8 @@
 package main.back
 
-import main.data.GameData.damage
-import main.data.GameData.missiles
-import main.data.GameData.objects
+import main.back.GameData.damage
+import main.back.GameData.missiles
+import main.back.GameData.objects
 import main.data.StyleData
 import main.data.StyleData.pMissile
 import main.intersection

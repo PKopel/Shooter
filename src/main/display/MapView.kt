@@ -1,10 +1,10 @@
 package main.display
 
-import main.data.GameData
-import main.data.GameData.objects
-import main.data.GameData.player
-import main.data.GameData.shiftX
-import main.data.GameData.shiftY
+import main.back.GameData
+import main.back.GameData.objects
+import main.back.GameData.player
+import main.back.GameData.shiftX
+import main.back.GameData.shiftY
 import main.data.StyleData
 import java.awt.Color
 import java.awt.Graphics
