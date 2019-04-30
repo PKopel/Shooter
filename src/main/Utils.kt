@@ -1,15 +1,11 @@
 package main
 
-import main.back.Obstacle
-import main.back.Shooter
-import main.data.GameData
 import java.awt.Color
 import java.awt.event.ActionEvent
 import javax.swing.JButton
 import javax.swing.JFrame
 import javax.swing.JRadioButtonMenuItem
 import javax.swing.SwingUtilities.invokeLater
-import kotlin.random.Random
 
 fun run(f: JFrame, width: Int, height: Int) {
     invokeLater {
@@ -26,22 +22,6 @@ fun run(f: JFrame, width: Int, height: Int, name: String) {
         f.defaultCloseOperation = JFrame.EXIT_ON_CLOSE
         f.setSize(width, height)
         f.isVisible = true
-    }
-}
-
-fun fillMap() {
-    val rand = Random(System.currentTimeMillis())
-    while (GameData.objects.sizeO < 200) {
-        GameData.objects.add(Obstacle(
-                (rand.nextInt() % 150 - 50) * 10 + 1,
-                (rand.nextInt() % 150 - 50) * 10 + 1,
-                (6 + (rand.nextInt()) % 6) * 10 - 2,
-                (6 + (rand.nextInt()) % 6) * 10 - 2))
-    }
-    while (GameData.objects.sizeS<20){
-        GameData.objects.add(Shooter(
-                (rand.nextInt() % 150 - 50) * 10 + 1,
-                (rand.nextInt() % 150 - 50) * 10 + 1))
     }
 }
 

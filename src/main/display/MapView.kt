@@ -1,10 +1,10 @@
 package main.display
 
-import main.data.GameData
-import main.data.GameData.objects
-import main.data.GameData.player
-import main.data.GameData.shiftX
-import main.data.GameData.shiftY
+import main.back.GameData
+import main.back.GameData.objects
+import main.back.GameData.player
+import main.back.GameData.shiftX
+import main.back.GameData.shiftY
 import main.data.StyleData
 import java.awt.Color
 import java.awt.Graphics
@@ -27,7 +27,7 @@ class MapView : JPanel() {
         }
         g.color = StyleData.player
         val (x, y, w, h) = player
-        val d = GameData.damage
+        val d = GameData.damage.toInt()
         g.drawOval(x + shiftX, y + shiftY, w, h)
         g.fillOval(x + shiftX + d, y + shiftY + d, w - 2 * d, h - 2 * d)
     }

@@ -1,5 +1,6 @@
 package main.data
 
+import main.back.GameData
 import java.awt.Color
 
 object StyleData {
