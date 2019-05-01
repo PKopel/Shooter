@@ -1,9 +1,8 @@
 package main.back
 
-import main.contains
 import main.back.Game.missiles
+import main.back.Game.player
 import main.data.StyleData
-import main.intersection
 import java.awt.Color
 import java.awt.Graphics
 
@@ -21,7 +20,7 @@ data class Shooter(override var x: Int,
         get() = -10..700 contains x + Game.shiftX &&
                 -10..700 contains y + Game.shiftY
 
-    fun xCoords(): IntArray = intArrayOf(
+    private fun xCoords(): IntArray = intArrayOf(
             x + Game.shiftX,
             x + width / 3 + Game.shiftX,
             x + 2 * width / 3 + Game.shiftX,
@@ -31,7 +30,7 @@ data class Shooter(override var x: Int,
             x + width / 3 + Game.shiftX,
             x + Game.shiftX)
 
-    fun yCoords(): IntArray = intArrayOf(
+    private fun yCoords(): IntArray = intArrayOf(
             y + height / 3 + Game.shiftY,
             y + Game.shiftY,
             y + Game.shiftY,
@@ -44,10 +43,8 @@ data class Shooter(override var x: Int,
     fun shoot() {
         if (visible && height > 0)
             synchronized(missiles) {
-                missiles.put(Missile(x + width / 2, y - 1, Direction.Down))
-                missiles.put(Missile(x + width / 2, y + height, Direction.Up))
-                missiles.put(Missile(x - 2, y + height / 2, Direction.Left))
-                missiles.put(Missile(x + width, y + height / 2, Direction.Right))
+                val angle = Math.atan2((y- player.y).toDouble(),(x- player.x).toDouble())
+                missiles.put(Missile(x + width / 2, y + height/2, -angle))
             }
     }
 
