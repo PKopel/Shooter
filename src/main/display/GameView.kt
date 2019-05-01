@@ -2,22 +2,23 @@ package main.display
 
 import main.App
 import main.button
-import main.data.GameData
-import main.data.GameData.damage
-import main.data.GameData.player
-import main.data.GameData.playing
-import main.data.GameData.shiftX
-import main.data.GameData.shiftY
+import main.back.Game
+import main.back.Game.damage
+import main.back.Game.player
+import main.back.Game.playing
+import main.back.Game.shiftX
+import main.back.Game.shiftY
 import main.data.StringData
 import main.data.StyleData
 import main.data.StyleData.theme
 import main.data.ViewData.game
-import main.fillMap
 import main.run
 import java.awt.BorderLayout
 import java.awt.FlowLayout
 import java.awt.event.KeyAdapter
 import java.awt.event.KeyEvent
+import java.awt.event.MouseAdapter
+import java.awt.event.MouseEvent
 import javax.swing.JButton
 import javax.swing.JFrame
 import javax.swing.JPanel
@@ -25,7 +26,7 @@ import javax.swing.JPanel
 class GameView : JFrame() {
     private val buttons = JPanel()
     private val back = button(StringData.ret, theme) {
-        if(damage>=10) GameData.reset()
+        if(damage>=10) Game.reset()
         else playing = false
         run(App, 150, 150, StringData.appName)
         dispose()
@@ -34,20 +35,17 @@ class GameView : JFrame() {
         val play = (it.source as JButton)
         when (play.text) {
             StringData.lost,StringData.won -> {
-                GameData.reset()
-                fillMap()
+                Game.reset()
                 play.text = StringData.play
             }
             else -> playing = !playing
         }
     }
+    private val reset = button(StringData.reset, theme){
+        Game.reset()
+        play.text=StringData.play
+    }
     private val kl = object : KeyAdapter() {
-
-        override fun keyReleased(k: KeyEvent) {
-            if(k.extendedKeyCode == 0xa ) {
-                player.shoot()
-            }
-        }
 
         override fun keyPressed(k: KeyEvent) {
             if (playing)
@@ -65,19 +63,29 @@ class GameView : JFrame() {
                         shiftX += 10; game.repaint()
                     }
                     0x10 -> player.direction=player.direction.next()
+                    0xa -> player.shoot()
                     else -> println(k.paramString())
                 }
         }
     }
 
+    private val ml = object : MouseAdapter(){
+
+        override fun mouseClicked(p0: MouseEvent?) {
+            if(playing) player.shoot()
+        }
+
+    }
+
     init {
-        fillMap()
         back.addKeyListener(kl)
         play.addKeyListener(kl)
+        game.addMouseListener(ml)
         add(game)
         buttons.background = StyleData.background
         buttons.layout = FlowLayout()
         buttons.add(play)
+        buttons.add(reset)
         buttons.add(back)
         add(BorderLayout.SOUTH, buttons)
     }

@@ -8,6 +8,7 @@ object StringData {
     val stop = "Stop"
     val exit = "Exit"
     val ret = "Return"
+    val reset = "Reset"
     val opts = arrayOf("Options", "Player color","Obstacles color","Shooters color","Theme")
     //view names
     val appName = "Shooter"

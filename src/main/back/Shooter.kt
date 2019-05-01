@@ -1,43 +1,48 @@
 package main.back
 
 import main.contains
-import main.data.GameData
-import main.data.GameData.missiles
+import main.back.Game.missiles
 import main.data.StyleData
 import main.intersection
 import java.awt.Color
+import java.awt.Graphics
 
 data class Shooter(override var x: Int,
                    override var y: Int,
                    override val width: Int = 21,
                    override val height: Int = 21,
                    override var color: Color = StyleData.shooters) : MapObject() {
+    override fun paint(g: Graphics) {
+        g.color=color
+        g.fillPolygon(this.xCoords(), this.yCoords(), 8)
+    }
+
     private val visible: Boolean
-        get() = 0..700 contains x + GameData.shiftX &&
-                0..700 contains y + GameData.shiftY
+        get() = -10..700 contains x + Game.shiftX &&
+                -10..700 contains y + Game.shiftY
 
     fun xCoords(): IntArray = intArrayOf(
-            x + GameData.shiftX,
-            x + width / 3 + GameData.shiftX,
-            x + 2 * width / 3 + GameData.shiftX,
-            x + width + GameData.shiftX,
-            x + width + GameData.shiftX,
-            x + 2 * width / 3 + GameData.shiftX,
-            x + width / 3 + GameData.shiftX,
-            x + GameData.shiftX)
+            x + Game.shiftX,
+            x + width / 3 + Game.shiftX,
+            x + 2 * width / 3 + Game.shiftX,
+            x + width + Game.shiftX,
+            x + width + Game.shiftX,
+            x + 2 * width / 3 + Game.shiftX,
+            x + width / 3 + Game.shiftX,
+            x + Game.shiftX)
 
     fun yCoords(): IntArray = intArrayOf(
-            y + height / 3 + GameData.shiftY,
-            y + GameData.shiftY,
-            y + GameData.shiftY,
-            y + height / 3 + GameData.shiftY,
-            y + 2 * height / 3 + GameData.shiftY,
-            y + height + GameData.shiftY,
-            y + height + GameData.shiftY,
-            y + 2 * height / 3 + GameData.shiftY)
+            y + height / 3 + Game.shiftY,
+            y + Game.shiftY,
+            y + Game.shiftY,
+            y + height / 3 + Game.shiftY,
+            y + 2 * height / 3 + Game.shiftY,
+            y + height + Game.shiftY,
+            y + height + Game.shiftY,
+            y + 2 * height / 3 + Game.shiftY)
 
     fun shoot() {
-        if (visible)
+        if (visible && height > 0)
             synchronized(missiles) {
                 missiles.put(Missile(x + width / 2, y - 1, Direction.Down))
                 missiles.put(Missile(x + width / 2, y + height, Direction.Up))

@@ -2,29 +2,34 @@ package main.back
 
 import main.back.MapObject.Direction.*
 import main.contains
-import main.data.GameData
-import main.data.GameData.objects
-import main.data.GameData.player
+import main.back.Game.objects
+import main.back.Game.player
 import java.awt.Color
+import java.awt.Graphics
 
 data class Missile(override var x: Int,
                    override var y: Int,
                    val direction: Direction = Up,
                    override var color: Color = Color.BLACK) : MapObject() {
-    override val height: Int = 2
-    override val width: Int = 2
+    override fun paint(g: Graphics) {
+        g.color = color
+        g.fillOval(x + Game.shiftX, y + Game.shiftY, width, height)
+    }
+
+    override val height: Int = 4
+    override val width: Int = 4
     private var range = 300
 
     @Suppress("ReplaceCallWithBinaryOperator")
     private fun canMove(new: Missile): Boolean {
         return when {
             objects.contains(new) -> {
-                GameData.missiles.remove(this)
+                Game.missiles.remove(this)
                 false
             }
             new.equals(player) && this.color== Color.BLACK -> {
                 player.hit()
-                GameData.missiles.remove(this)
+                Game.missiles.remove(this)
                 false
             }
             else -> true
@@ -54,7 +59,7 @@ data class Missile(override var x: Int,
                     } else false
             }
         } else {
-            GameData.missiles.remove(this)
+            Game.missiles.remove(this)
             false
         }
     }
