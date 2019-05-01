@@ -4,6 +4,7 @@ import main.back.Game
 import java.awt.Color
 
 object StyleData {
+    var indicator: Color = Color.RED
     var player: Color = Color.BLUE
     var pMissile: Color = Color.RED
     var theme: Color = Color.LIGHT_GRAY
