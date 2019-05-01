@@ -5,7 +5,6 @@ import main.back.Game.missiles
 import main.back.Game.objects
 import main.data.StyleData
 import main.data.StyleData.pMissile
-import main.intersection
 import java.awt.Color
 import java.awt.Graphics
 
@@ -14,26 +13,13 @@ data class Player(override var x: Int = 300,
                   override val width: Int = 20,
                   override val height: Int = 20,
                   override var color: Color = StyleData.player) : MapObject() {
+
     override fun paint(g: Graphics) {
         g.color=color
         val d = Game.damage.toInt()
         g.drawOval(x + Game.shiftX, y + Game.shiftY, width, height)
         g.fillOval(x + Game.shiftX + d, y + Game.shiftY + d, width - 2 * d, height - 2 * d)
-        val ix = when(direction){
-            Direction.Left -> x
-            Direction.Right -> x+width-6
-            else -> x + width/2 - 3
-        }
-        val iy = when(direction){
-            Direction.Down -> y
-            Direction.Up -> y + height - 6
-            else -> y + height/2 -3
-         }
-        g.color= StyleData.indicator
-        g.fillRect(ix + Game.shiftX,iy + Game.shiftY,6,6)
     }
-
-    var direction = Direction.Down
 
     fun moveLeft(): Boolean {
         return if (objects.contains(Obstacle(x - 10, y, width, height))) false
@@ -67,9 +53,10 @@ data class Player(override var x: Int = 300,
         }
     }
 
-    fun shoot() {
+    fun shoot(xm: Int, ym: Int) {
         synchronized(missiles) {
-            missiles.put(Missile(x + width / 2, y + height / 2, direction, pMissile))
+            val angle = Math.atan2(-(y + Game.shiftY -ym).toDouble(),(x + Game.shiftX -xm).toDouble())
+            missiles.put(Missile(x + width / 2, y + height / 2, angle , pMissile))
         }
     }
 

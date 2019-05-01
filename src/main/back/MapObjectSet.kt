@@ -7,7 +7,7 @@ import main.data.ViewData
 import kotlin.math.abs
 import kotlin.random.Random
 
-class MapObjectSet(private val maxObst: Int = 100, private val maxSht: Int = 15) {
+class MapObjectSet(private val maxObst: Int = 100, private val maxSht: Int = 20) {
     var sizeO = 0
     var sizeS = 0
     val obstacles = Array(maxObst) { Obstacle(0, 0, 0, 0) }
@@ -61,8 +61,12 @@ class MapObjectSet(private val maxObst: Int = 100, private val maxSht: Int = 15)
     fun contains(missile: Missile): Boolean {
         for (obst in obstacles) if (missile.equals(obst)) return true
         for (sht in shooters) if (missile.equals(sht)) {
-            if (missile.color == StyleData.pMissile) remove(sht)
-            return true
+            if (missile.color == StyleData.pMissile){
+                println("hit")
+                remove(sht)
+                return true
+            }
+            return false
         }
         return false
     }

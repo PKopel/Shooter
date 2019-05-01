@@ -1,19 +1,16 @@
 package main.display
 
 import main.App
-import main.button
 import main.back.Game.player
 import main.data.StringData
 import main.data.StyleData
-import main.radioMenuItem
+import main.data.ViewData
 import main.run
+import java.awt.BorderLayout
 import java.awt.Color
 import java.awt.GridLayout
 import java.awt.event.ActionEvent
-import javax.swing.JFrame
-import javax.swing.JMenu
-import javax.swing.JMenuBar
-import javax.swing.JMenuItem
+import javax.swing.*
 
 class SettingsView : JFrame() {
     private val style = StyleData
@@ -46,39 +43,37 @@ class SettingsView : JFrame() {
             "Light" -> {
                 style.theme = Color.LIGHT_GRAY
                 style.background = Color.WHITE
-                this@SettingsView.repaint()
             }
             "Dark" -> {
                 style.theme = Color.GRAY
                 style.background = Color.LIGHT_GRAY
-                this@SettingsView.repaint()
             }
             "Yellow" -> {
                 style.theme = Color.yellow
                 style.background = Color.LIGHT_GRAY
-                this@SettingsView.repaint()
             }
         }
+        ViewData.view = GameView()
+        ViewData.settings=SettingsView()
         for (radio in themes) if (radio !== e.source) radio.isSelected = false
     }
 
     private val pColors = arrayOf(
-            radioMenuItem("Cyan", Color.CYAN, ::pListener),
-            radioMenuItem("Blue", Color.BLUE, ::pListener, true),
-            radioMenuItem("Green", Color.GREEN, ::pListener),
-            radioMenuItem("Yellow", Color.YELLOW, ::pListener)
+            radioMenuItem("Purple", getRGBColor(88,34,115), ::pListener),
+            radioMenuItem("Blue", getRGBColor(23,45,153), ::pListener, true),
+            radioMenuItem("Brown", getRGBColor(128,53,0), ::pListener)
     )
 
     private val oColors = arrayOf(
-            radioMenuItem("Yellow", Color.YELLOW, ::oListener),
-            radioMenuItem("Orange", Color.ORANGE, ::oListener, true),
-            radioMenuItem("Grey", Color.GRAY, ::oListener),
-            radioMenuItem("Magenta", Color.magenta, ::oListener)
+            radioMenuItem("Brown", getRGBColor(38,11,11), ::oListener),
+            radioMenuItem("Green", getRGBColor(13,128,32), ::oListener, true),
+            radioMenuItem("Grey", getRGBColor(77,77,77), ::oListener)
     )
 
     private val sColors = arrayOf(
-            radioMenuItem("Red", Color.RED, ::sListener),
-            radioMenuItem("Black", Color.BLACK, ::sListener)
+            radioMenuItem("Red", getRGBColor(128,13,13), ::sListener, true),
+            radioMenuItem("Orange", getRGBColor(255,128,0), ::sListener),
+            radioMenuItem("Yellow", getRGBColor(179,165,18), ::sListener)
     )
 
     private val themes = arrayOf(
@@ -88,15 +83,15 @@ class SettingsView : JFrame() {
     )
 
     private val back = button(StringData.ret, style.theme) {
-        run(App, 150, 150, StringData.appName)
+        run(App(), 150, 200, StringData.appName)
         dispose()
     }
 
     init {
         background = style.background
         bar.background = style.theme
-        layout = GridLayout(2, 1)
-        bar.add(options)
+        layout = GridLayout(3, 1)
+        bar.add(BorderLayout.CENTER, options)
         for (item in pColors) menus[0].add(item)
         for (item in oColors) menus[1].add(item)
         for (item in sColors) menus[2].add(item)
