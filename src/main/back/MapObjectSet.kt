@@ -52,8 +52,7 @@ class MapObjectSet(private val maxObst: Int = 100, private val maxSht: Int = 15)
             }
         }
         if (sizeS == 0) {
-            ViewData.view.play.text = StringData.won
-            Game.playing = false
+            Game.won()
         }
         return found
     }

@@ -1,8 +1,11 @@
 package main.back
 
 import main.data.StringData
+import main.data.ViewData
 import main.data.ViewData.game
 import main.data.ViewData.view
+import java.awt.BorderLayout
+import javax.swing.JTextArea
 import kotlin.concurrent.timer
 
 object Game {
@@ -25,7 +28,7 @@ object Game {
     var damage = 0.0
         set(value) {
             field = value
-            if (value >= 10) playing = false
+            if (value >= 10) lose()
             game.repaint()
         }
     val objects = MapObjectSet()
@@ -64,6 +67,20 @@ object Game {
                 field = false
             }
         }
+
+    fun won(){
+        game.message.text=StringData.won
+        game.add(BorderLayout.CENTER,game.message)
+        view.play.isVisible=false
+        playing=false
+    }
+
+    fun lose(){
+        game.message.text=StringData.lost
+        game.add(BorderLayout.CENTER,game.message)
+        view.play.isVisible=false
+        playing=false
+    }
 
     init {
         objects.fillMap()

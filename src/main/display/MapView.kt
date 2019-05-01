@@ -4,10 +4,14 @@ import main.back.Game
 import main.back.Game.objects
 import main.back.Game.player
 import java.awt.Color
+import java.awt.Dimension
 import java.awt.Graphics
 import javax.swing.JPanel
+import javax.swing.JTextArea
 
 class MapView : JPanel() {
+
+    val message = JTextArea()
 
     override fun paintComponent(g: Graphics) {
         super.paintComponent(g)
@@ -18,6 +22,8 @@ class MapView : JPanel() {
     }
 
     init {
+        message.isEditable=false
+        message.minimumSize= Dimension(100,30)
         background = Color.WHITE
         repaint()
     }
