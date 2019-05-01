@@ -19,6 +19,18 @@ data class Player(override var x: Int = 300,
         val d = Game.damage.toInt()
         g.drawOval(x + Game.shiftX, y + Game.shiftY, width, height)
         g.fillOval(x + Game.shiftX + d, y + Game.shiftY + d, width - 2 * d, height - 2 * d)
+        val ix = when(direction){
+            Direction.Left -> x
+            Direction.Right -> x+width-6
+            else -> x + width/2 - 3
+        }
+        val iy = when(direction){
+            Direction.Down -> y
+            Direction.Up -> y + height - 6
+            else -> y + height/2 -3
+         }
+        g.color= StyleData.indicator
+        g.fillRect(ix + Game.shiftX,iy + Game.shiftY,6,6)
     }
 
     var direction = Direction.Down
