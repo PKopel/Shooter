@@ -2,12 +2,12 @@ package main.display
 
 import main.App
 import main.button
-import main.back.GameData
-import main.back.GameData.damage
-import main.back.GameData.player
-import main.back.GameData.playing
-import main.back.GameData.shiftX
-import main.back.GameData.shiftY
+import main.back.Game
+import main.back.Game.damage
+import main.back.Game.player
+import main.back.Game.playing
+import main.back.Game.shiftX
+import main.back.Game.shiftY
 import main.data.StringData
 import main.data.StyleData
 import main.data.StyleData.theme
@@ -26,7 +26,7 @@ import javax.swing.JPanel
 class GameView : JFrame() {
     private val buttons = JPanel()
     private val back = button(StringData.ret, theme) {
-        if(damage>=10) GameData.reset()
+        if(damage>=10) Game.reset()
         else playing = false
         run(App, 150, 150, StringData.appName)
         dispose()
@@ -35,14 +35,14 @@ class GameView : JFrame() {
         val play = (it.source as JButton)
         when (play.text) {
             StringData.lost,StringData.won -> {
-                GameData.reset()
+                Game.reset()
                 play.text = StringData.play
             }
             else -> playing = !playing
         }
     }
     private val reset = button(StringData.reset, theme){
-        GameData.reset()
+        Game.reset()
         play.text=StringData.play
     }
     private val kl = object : KeyAdapter() {

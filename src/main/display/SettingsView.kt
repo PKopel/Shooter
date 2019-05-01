@@ -2,7 +2,7 @@ package main.display
 
 import main.App
 import main.button
-import main.back.GameData.player
+import main.back.Game.player
 import main.data.StringData
 import main.data.StyleData
 import main.radioMenuItem

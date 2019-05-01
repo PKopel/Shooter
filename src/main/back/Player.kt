@@ -1,18 +1,25 @@
 package main.back
 
-import main.back.GameData.damage
-import main.back.GameData.missiles
-import main.back.GameData.objects
+import main.back.Game.damage
+import main.back.Game.missiles
+import main.back.Game.objects
 import main.data.StyleData
 import main.data.StyleData.pMissile
 import main.intersection
 import java.awt.Color
+import java.awt.Graphics
 
 data class Player(override var x: Int = 300,
                   override var y: Int = 300,
                   override val width: Int = 20,
                   override val height: Int = 20,
                   override var color: Color = StyleData.player) : MapObject() {
+    override fun paint(g: Graphics) {
+        g.color=color
+        val d = Game.damage.toInt()
+        g.drawOval(x + Game.shiftX, y + Game.shiftY, width, height)
+        g.fillOval(x + Game.shiftX + d, y + Game.shiftY + d, width - 2 * d, height - 2 * d)
+    }
 
     var direction = Direction.Down
 

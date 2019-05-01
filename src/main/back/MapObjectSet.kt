@@ -1,6 +1,6 @@
 package main.back
 
-import main.back.GameData.player
+import main.back.Game.player
 import main.data.StringData
 import main.data.StyleData
 import main.data.ViewData
@@ -53,7 +53,7 @@ class MapObjectSet(private val maxObst: Int = 100, private val maxSht: Int = 15)
         }
         if (sizeS == 0) {
             ViewData.view.play.text = StringData.won
-            GameData.playing = false
+            Game.playing = false
         }
         return found
     }
@@ -76,15 +76,15 @@ class MapObjectSet(private val maxObst: Int = 100, private val maxSht: Int = 15)
 
     fun fillMap() {
         val rand = Random(System.currentTimeMillis())
-        while (GameData.objects.sizeO < maxObst) {
-            GameData.objects.add(Obstacle(
+        while (Game.objects.sizeO < maxObst) {
+            Game.objects.add(Obstacle(
                     (abs(rand.nextInt())% 150 - 50) * 10 + 1,
                     (abs(rand.nextInt())% 150 - 50) * 10 + 1,
                     (6 + (rand.nextInt()) % 6) * 10 - 2,
                     (6 + (rand.nextInt()) % 6) * 10 - 2))
         }
-        while (GameData.objects.sizeS < maxSht){
-            GameData.objects.add(Shooter(
+        while (Game.objects.sizeS < maxSht){
+            Game.objects.add(Shooter(
                     (abs(rand.nextInt()) % 150 - 50) * 10 + 1,
                     (abs(rand.nextInt()) % 150 - 50) * 10 + 1))
         }

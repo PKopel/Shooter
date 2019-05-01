@@ -1,6 +1,6 @@
 package main.data
 
-import main.back.GameData
+import main.back.Game
 import java.awt.Color
 
 object StyleData {
@@ -10,7 +10,7 @@ object StyleData {
     var background: Color = Color.WHITE
     var obstacles: Color = Color.ORANGE
         set(value) {
-            for (o in GameData.objects.obstacles) o.color = value
+            for (o in Game.objects.obstacles) o.color = value
             field = value
         }
     var shooters: Color = Color.RED

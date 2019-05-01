@@ -5,7 +5,7 @@ import main.data.ViewData.game
 import main.data.ViewData.view
 import kotlin.concurrent.timer
 
-object GameData {
+object Game {
 
     fun reset() {
         damage = 0.0
