@@ -24,7 +24,7 @@ class MapView : JPanel() {
     init {
         message.isEditable=false
         message.minimumSize= Dimension(100,30)
-        background = getRGBColor(22,217,22)
+        background = Color.WHITE
         repaint()
     }
 }

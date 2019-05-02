@@ -1,9 +1,7 @@
 package main.back
 
 import main.back.Game.player
-import main.data.StringData
 import main.data.StyleData
-import main.data.ViewData
 import kotlin.math.abs
 import kotlin.random.Random
 
@@ -12,6 +10,10 @@ class MapObjectSet(private val maxObst: Int = 100, private val maxSht: Int = 20)
     var sizeS = 0
     val obstacles = Array(maxObst) { Obstacle(0, 0, 0, 0) }
     val shooters = Array(maxSht) { Shooter(0, 0, 0, 0) }
+    val bounds = arrayOf(Obstacle(-500, -500, 0, 1500),
+            Obstacle(1000, -500, 0, 1500),
+            Obstacle(-500, -500, 1500, 0),
+            Obstacle(-500, 1000, 1500, 0))
 
     @Suppress("ReplaceCallWithBinaryOperator")
     fun add(element: Obstacle): Boolean {
@@ -59,19 +61,16 @@ class MapObjectSet(private val maxObst: Int = 100, private val maxSht: Int = 20)
 
     @Suppress("ReplaceCallWithBinaryOperator")
     fun contains(missile: Missile): Boolean {
+        for (bound in bounds) if (missile.equals(bound)) return true
         for (obst in obstacles) if (missile.equals(obst)) return true
-        for (sht in shooters) if (missile.equals(sht)) {
-            if (missile.color == StyleData.pMissile){
-                println("hit")
-                remove(sht)
-                return true
-            }
-            return false
-        }
+        for (sht in shooters)
+            if (missile.equals(sht))
+                if (missile.color == StyleData.pMissile) return remove(sht)
         return false
     }
 
     fun contains(element: MapObject): Boolean {
+        for (bound in bounds) if (element == bound) return true
         for (obst in obstacles) if (obst == element) return true
         for (sht in shooters) if (sht == element) return true
         return false
@@ -81,12 +80,12 @@ class MapObjectSet(private val maxObst: Int = 100, private val maxSht: Int = 20)
         val rand = Random(System.currentTimeMillis())
         while (Game.objects.sizeO < maxObst) {
             Game.objects.add(Obstacle(
-                    (abs(rand.nextInt())% 150 - 50) * 10 + 1,
-                    (abs(rand.nextInt())% 150 - 50) * 10 + 1,
+                    (abs(rand.nextInt()) % 150 - 50) * 10 + 1,
+                    (abs(rand.nextInt()) % 150 - 50) * 10 + 1,
                     (6 + (rand.nextInt()) % 6) * 10 - 2,
                     (6 + (rand.nextInt()) % 6) * 10 - 2))
         }
-        while (Game.objects.sizeS < maxSht){
+        while (Game.objects.sizeS < maxSht) {
             Game.objects.add(Shooter(
                     (abs(rand.nextInt()) % 150 - 50) * 10 + 1,
                     (abs(rand.nextInt()) % 150 - 50) * 10 + 1))

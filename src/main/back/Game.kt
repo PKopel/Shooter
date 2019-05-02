@@ -39,7 +39,7 @@ object Game {
         set(value) {
             if ((value < field && player.moveRight()) ||
                     (value > field && player.moveLeft())) {
-                if (Math.abs(value - 250) < 750) {
+                if (Math.abs(value - 100) < 400) {
                     if (bufferX == 0) field = value
                     else bufferX -= 10
                 } else bufferX += 10
@@ -50,7 +50,7 @@ object Game {
         set(value) {
             if ((value < field && player.moveUp()) ||
                     (value > field && player.moveDown())) {
-                if (Math.abs(value - 250) < 750) {
+                if (Math.abs(value - 65) < 435) {
                     if (bufferY == 0) field = value
                     else bufferY -= 10
                 } else bufferY += 10
