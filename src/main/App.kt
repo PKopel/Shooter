@@ -7,19 +7,31 @@ import main.data.StringData.level
 import main.data.StyleData
 import main.data.ViewData
 import main.display.button
-import java.awt.GridLayout
+import java.awt.BorderLayout
+import java.awt.FlowLayout
+import java.awt.Graphics
+import java.io.File
+import javax.imageio.ImageIO
 import javax.swing.JComboBox
 import javax.swing.JFrame
+import javax.swing.JPanel
 
 class App : JFrame() {
+    private val buttons = JPanel()
+    private val image = object: JPanel(){
+        override fun paintComponent(g: Graphics) {
+            super.paintComponent(g)
+            g.drawImage(ImageIO.read(File("graphics/starting.png")),0,0,this)
+        }
+    }
     private val data = StyleData
     private val difficulty = JComboBox<String>(level)
     private val start = button(StringData.play, data.theme) {
-        run(ViewData.view, 700, 700, StringData.appName)
+        run(ViewData.view, data.gameWidth, data.gameHeight, StringData.appName)
         dispose()
     }
     private val settings = button(StringData.settings, data.theme) {
-        run(ViewData.settings, 150, 150)
+        run(ViewData.settings, data.settingsWidth, data.settingsHeight)
         dispose()
     }
     private val exit = button(StringData.exit, data.theme) {
@@ -38,17 +50,19 @@ class App : JFrame() {
         }
         difficulty.background = data.theme
         background = data.background
-        layout = GridLayout(4, 1)
-        add(difficulty)
-        add(start)
-        add(settings)
-        add(exit)
+        add(image)
+        buttons.layout=FlowLayout()
+        buttons.add(difficulty)
+        buttons.add(start)
+        buttons.add(settings)
+        buttons.add(exit)
+        add(BorderLayout.SOUTH, buttons)
     }
 
     companion object {
         @JvmStatic
         fun main(args: Array<String>) {
-            run(App(), 150, 200, StringData.appName)
+            run(App(), StyleData.appWidth, StyleData.appHeight, StringData.appName)
         }
     }
 }

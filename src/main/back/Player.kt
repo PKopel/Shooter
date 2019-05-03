@@ -3,10 +3,17 @@ package main.back
 import main.back.Game.damage
 import main.back.Game.missiles
 import main.back.Game.objects
+import main.back.Game.shiftX
+import main.back.Game.shiftY
 import main.data.StyleData
 import main.data.StyleData.pMissile
 import java.awt.Color
 import java.awt.Graphics
+import java.awt.image.ImageObserver
+import java.io.File
+import javax.imageio.ImageIO
+import java.lang.Math.cos
+import java.lang.Math.sin
 
 data class Player(override var x: Int = 300,
                   override var y: Int = 300,
@@ -14,49 +21,87 @@ data class Player(override var x: Int = 300,
                   override val height: Int = 20,
                   override var color: Color = StyleData.player) : MapObject() {
 
-    override fun paint(g: Graphics) {
-        g.color=color
-        val d = Game.damage.toInt()
-        g.drawOval(x + Game.shiftX, y + Game.shiftY, width, height)
-        g.fillOval(x + Game.shiftX + d, y + Game.shiftY + d, width - 2 * d, height - 2 * d)
+    private var image = ImageIO.read(File("graphics/standing.png"))
+    var angle = 0.0
+    private var dx = x.toDouble()
+    private var dy = y.toDouble()
+    override fun paint(g: Graphics, observer: ImageObserver) {
+        val rotatedImage= rotate(image,-(angle+0.5*Math.PI))
+        g.drawImage(rotatedImage,x + shiftX, y + shiftY,observer)
     }
 
     fun moveLeft(): Boolean {
-        return if (objects.contains(Obstacle(x - 10, y, width, height))) false
+        return if (
+                objects.contains(
+                        Obstacle((dx + cos(angle) *10).toInt(),
+                                (dy + sin(angle) *10).toInt(),
+                                width, height))) false
         else {
-            x -= 10
+            dy+=sin(angle)*10
+            dx+=cos(angle)*10
+            shiftY-=(sin(angle)*10).toInt()
+            shiftX-=(cos(angle)*10).toInt()
+            x=dx.toInt()
+            y=dy.toInt()
             true
         }
     }
 
     fun moveRight(): Boolean {
-        return if (objects.contains(Obstacle(x + 10, y, width, height))) false
+        return if (
+                objects.contains(
+                        Obstacle((dx - cos(angle)*10).toInt(),
+                                (dy - sin(angle) *10).toInt(),
+                                width, height))) false
         else {
-            x += 10
-            true
-        }
-    }
-
-    fun moveUp(): Boolean {
-        return if (objects.contains(Obstacle(x, y + 10, width, height))) false
-        else {
-            y += 10
+            dx-= cos(angle) *10
+            dy-= sin(angle) *10
+            shiftY+=(sin(angle)*10).toInt()
+            shiftX+=(cos(angle)*10).toInt()
+            x=dx.toInt()
+            y=dy.toInt()
             true
         }
     }
 
     fun moveDown(): Boolean {
-        return if (objects.contains(Obstacle(x, y - 10, width, height))) false
+        return if (
+                objects.contains(
+                        Obstacle((dx - sin(angle)*10).toInt(),
+                                (dy + cos(angle)*10).toInt(),
+                                width, height))) false
         else {
-            y -= 10
+            dx-=sin(angle)*10
+            dy+=cos(angle)*10
+            shiftX+=(sin(angle)*10).toInt()
+            shiftY-=(cos(angle)*10).toInt()
+            x=dx.toInt()
+            y=dy.toInt()
+            true
+        }
+    }
+
+    fun moveUp(): Boolean {
+        return if (
+                objects.contains(
+                        Obstacle((dx + sin(angle)*10).toInt(),
+                                (dy - cos(angle)*10).toInt(),
+                                width, height))) false
+        else {
+            dx+=sin(angle)*10
+            dy-=cos(angle)*10
+            shiftX-=(sin(angle)*10).toInt()
+            shiftY+=(cos(angle)*10).toInt()
+            x=dx.toInt()
+            y=dy.toInt()
             true
         }
     }
 
     fun shoot(xm: Int, ym: Int) {
         synchronized(missiles) {
-            val angle = Math.atan2(-(y + Game.shiftY -ym).toDouble(),(x + Game.shiftX -xm).toDouble())
-            missiles.put(Missile(x + width / 2, y + height / 2, angle , pMissile))
+            missiles.put(Missile(centerX(), centerY(),
+                    angle( x + shiftX, xm,y + shiftY ,ym) , pMissile))
         }
     }
 

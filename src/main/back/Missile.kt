@@ -4,6 +4,7 @@ import main.back.Game.objects
 import main.back.Game.player
 import java.awt.Color
 import java.awt.Graphics
+import java.awt.image.ImageObserver
 import java.lang.Math.cos
 import java.lang.Math.sin
 
@@ -11,7 +12,7 @@ data class Missile(override var x: Int,
                    override var y: Int,
                    private val angle: Double = 0.0,
                    override var color: Color = Color.BLACK) : MapObject() {
-    override fun paint(g: Graphics) {
+    override fun paint(g: Graphics, observer: ImageObserver) {
         g.color = color
         g.fillOval(x + Game.shiftX, y + Game.shiftY, width, height)
     }
@@ -41,7 +42,7 @@ data class Missile(override var x: Int,
     fun move(): Boolean {
         return if (range > 0) {
             range--
-            if(canMove(Missile((dx - cos(angle)).toInt(),(dy - sin(angle)).toInt(),color = color))){
+            if(canMove(Missile((dx - cos(angle)).toInt(),(dy + sin(angle)).toInt(),color = color))){
                 dx-=cos(angle)
                 dy+=sin(angle)
                 x=dx.toInt()

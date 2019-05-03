@@ -15,10 +15,11 @@ class MapView : JPanel() {
 
     override fun paintComponent(g: Graphics) {
         super.paintComponent(g)
-        for (obstacle in objects.obstacles) obstacle.paint(g)
-        for (shooter in objects.shooters) shooter.paint(g)
-        for (missile in Game.missiles) missile.paint(g)
-        player.paint(g)
+        player.paint(g,this)
+        for (obstacle in objects.obstacles) obstacle.paint(g,this)
+        for (shooter in objects.shooters) shooter.paint(g,this)
+        for (missile in Game.missiles) missile.paint(g,this)
+
     }
 
     init {

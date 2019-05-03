@@ -83,7 +83,7 @@ class SettingsView : JFrame() {
     )
 
     private val back = button(StringData.ret, style.theme) {
-        run(App(), 150, 200, StringData.appName)
+        run(App(), StyleData.appWidth, StyleData.appHeight, StringData.appName)
         dispose()
     }
 
