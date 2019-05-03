@@ -7,6 +7,7 @@ import main.back.Game.player
 import main.back.Game.playing
 import main.back.Game.shiftX
 import main.back.Game.shiftY
+import main.back.angle
 import main.data.StringData
 import main.data.StyleData
 import main.data.StyleData.theme
@@ -27,7 +28,7 @@ class GameView : JFrame() {
     private val back = button(StringData.ret, theme) {
         if (damage >= 10) Game.reset()
         else playing = false
-        run(App(), 150, 200, StringData.appName)
+        run(App(), StyleData.appWidth, StyleData.appHeight, StringData.appName)
         dispose()
     }
     val play = button(StringData.play, theme) {
@@ -52,16 +53,16 @@ class GameView : JFrame() {
             if (playing)
                 when (k.extendedKeyCode) {
                     0x44, 0x27 -> {
-                        shiftX -= 10; game.repaint()
+                        player.moveRight(); game.repaint()
                     }
                     0x57, 0x26 -> {
-                        shiftY += 10; game.repaint()
+                        player.moveUp(); game.repaint()
                     }
                     0x53, 0x28 -> {
-                        shiftY -= 10; game.repaint()
+                        player.moveDown(); game.repaint()
                     }
                     0x41, 0x25 -> {
-                        shiftX += 10; game.repaint()
+                        player.moveLeft(); game.repaint()
                     }
                     else -> println(k.paramString())
                 }
@@ -71,8 +72,13 @@ class GameView : JFrame() {
     private val ml = object : MouseAdapter(){
 
         override fun mouseClicked(e: MouseEvent) {
-            //e.translatePoint(shiftX, shiftY)
-            if(playing) player.shoot(e.x,e.y)
+            if(playing) {
+                player.shoot(e.x, e.y)
+                player.angle=angle(
+                        player.centerX() + shiftX, e.x,
+                        player.centerY() + shiftY , e.y)
+                println("moved ${player.angle/Math.PI}")
+            }
         }
     }
 

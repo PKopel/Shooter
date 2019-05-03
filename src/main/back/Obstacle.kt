@@ -3,13 +3,14 @@ package main.back
 import main.data.StyleData
 import java.awt.Color
 import java.awt.Graphics
+import java.awt.image.ImageObserver
 
 data class Obstacle(override var x: Int,
                     override var y: Int,
                     override val width: Int,
                     override val height: Int,
                     override var color: Color = StyleData.obstacles) : MapObject(){
-    override fun paint(g: Graphics) {
+    override fun paint(g: Graphics, observer: ImageObserver) {
         g.color=color
         g.fillRect(x + Game.shiftX, y + Game.shiftY, width, height)
     }

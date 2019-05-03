@@ -5,13 +5,14 @@ import main.back.Game.player
 import main.data.StyleData
 import java.awt.Color
 import java.awt.Graphics
+import java.awt.image.ImageObserver
 
 data class Shooter(override var x: Int,
                    override var y: Int,
                    override val width: Int = 21,
                    override val height: Int = 21,
                    override var color: Color = StyleData.shooters) : MapObject() {
-    override fun paint(g: Graphics) {
+    override fun paint(g: Graphics, observer: ImageObserver) {
         g.color=color
         g.fillPolygon(this.xCoords(), this.yCoords(), 8)
     }
@@ -43,8 +44,8 @@ data class Shooter(override var x: Int,
     fun shoot() {
         if (visible && height > 0)
             synchronized(missiles) {
-                val angle = Math.atan2((y- player.y).toDouble(),(x- player.x).toDouble())
-                missiles.put(Missile(x + width / 2, y + height/2, -angle))
+                missiles.put(Missile(centerX(), centerY(),
+                        angle(x, player.centerX(),y, player.centerY())))
             }
     }
 

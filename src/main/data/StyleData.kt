@@ -19,4 +19,10 @@ object StyleData {
             for (o in Game.objects.shooters) o.color = value
             field = value
         }
+    val appHeight = 310
+    val appWidth = 370
+    val gameHeight = 700
+    val gameWidth = 700
+    val settingsHeight = 150
+    val settingsWidth = 100
 }

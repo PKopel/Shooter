@@ -2,11 +2,9 @@ package main.back
 
 import main.data.StringData
 import main.data.StyleData
-import main.data.ViewData
 import main.data.ViewData.game
 import main.data.ViewData.view
 import java.awt.BorderLayout
-import javax.swing.JTextArea
 import kotlin.concurrent.timer
 
 object Game {
@@ -37,24 +35,18 @@ object Game {
     private var bufferX = 0
     var shiftX = 0
         set(value) {
-            if ((value < field && player.moveRight()) ||
-                    (value > field && player.moveLeft())) {
-                if (Math.abs(value - 100) < 400) {
-                    if (bufferX == 0) field = value
-                    else bufferX -= 10
-                } else bufferX += 10
-            }
+            if (Math.abs(value - 100) < 400) {
+                if (bufferX == 0) field = value
+                else bufferX -= Math.abs(value-field)
+            } else bufferX += Math.abs(value-field)
         }
     private var bufferY = 0
     var shiftY = 0
         set(value) {
-            if ((value < field && player.moveUp()) ||
-                    (value > field && player.moveDown())) {
-                if (Math.abs(value - 65) < 435) {
-                    if (bufferY == 0) field = value
-                    else bufferY -= 10
-                } else bufferY += 10
-            }
+            if (Math.abs(value - 65) < 435) {
+                if (bufferY == 0) field = value
+                else bufferY -= Math.abs(value-field)
+            } else bufferY += Math.abs(value-field)
         }
 
     var playing = false
@@ -69,18 +61,18 @@ object Game {
             }
         }
 
-    fun won(){
-        game.message.text=StringData.won
-        game.add(BorderLayout.CENTER,game.message)
-        view.play.isVisible=false
-        playing=false
+    fun won() {
+        game.message.text = StringData.won
+        game.add(BorderLayout.CENTER, game.message)
+        view.play.isVisible = false
+        playing = false
     }
 
-    fun lose(){
-        game.message.text=StringData.lost
-        game.add(BorderLayout.CENTER,game.message)
-        view.play.isVisible=false
-        playing=false
+    fun lose() {
+        game.message.text = StringData.lost
+        game.add(BorderLayout.CENTER, game.message)
+        view.play.isVisible = false
+        playing = false
     }
 
     init {
