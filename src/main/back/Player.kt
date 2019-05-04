@@ -33,14 +33,14 @@ data class Player(override var x: Int = 300,
     fun moveLeft(): Boolean {
         return if (
                 objects.contains(
-                        Obstacle((dx + cos(angle) *10).toInt(),
-                                (dy + sin(angle) *10).toInt(),
+                        Obstacle((dx + sin(angle) *10).toInt(),
+                                (dy + cos(angle) *10).toInt(),
                                 width, height))) false
         else {
-            dy+=sin(angle)*10
-            dx+=cos(angle)*10
-            shiftY-=(sin(angle)*10).toInt()
-            shiftX-=(cos(angle)*10).toInt()
+            dx+=sin(angle)*10
+            dy+=cos(angle)*10
+            shiftX-=(sin(angle)*10).toInt()
+            shiftY-=(cos(angle)*10).toInt()
             x=dx.toInt()
             y=dy.toInt()
             true
@@ -50,14 +50,14 @@ data class Player(override var x: Int = 300,
     fun moveRight(): Boolean {
         return if (
                 objects.contains(
-                        Obstacle((dx - cos(angle)*10).toInt(),
-                                (dy - sin(angle) *10).toInt(),
+                        Obstacle((dx - sin(angle)*10).toInt(),
+                                (dy - cos(angle) *10).toInt(),
                                 width, height))) false
         else {
-            dx-= cos(angle) *10
-            dy-= sin(angle) *10
-            shiftY+=(sin(angle)*10).toInt()
-            shiftX+=(cos(angle)*10).toInt()
+            dy-= cos(angle) *10
+            dx-= sin(angle) *10
+            shiftX+=(sin(angle)*10).toInt()
+            shiftY+=(cos(angle)*10).toInt()
             x=dx.toInt()
             y=dy.toInt()
             true
@@ -67,14 +67,14 @@ data class Player(override var x: Int = 300,
     fun moveDown(): Boolean {
         return if (
                 objects.contains(
-                        Obstacle((dx - sin(angle)*10).toInt(),
-                                (dy + cos(angle)*10).toInt(),
+                        Obstacle((dx + cos(angle)*10).toInt(),
+                                (dy - sin(angle)*10).toInt(),
                                 width, height))) false
         else {
-            dx-=sin(angle)*10
-            dy+=cos(angle)*10
-            shiftX+=(sin(angle)*10).toInt()
-            shiftY-=(cos(angle)*10).toInt()
+            dy-=sin(angle)*10
+            dx+=cos(angle)*10
+            shiftY+=(sin(angle)*10).toInt()
+            shiftX-=(cos(angle)*10).toInt()
             x=dx.toInt()
             y=dy.toInt()
             true
@@ -84,14 +84,14 @@ data class Player(override var x: Int = 300,
     fun moveUp(): Boolean {
         return if (
                 objects.contains(
-                        Obstacle((dx + sin(angle)*10).toInt(),
-                                (dy - cos(angle)*10).toInt(),
+                        Obstacle((dx - cos(angle)*10).toInt(),
+                                (dy + sin(angle)*10).toInt(),
                                 width, height))) false
         else {
-            dx+=sin(angle)*10
-            dy-=cos(angle)*10
-            shiftX-=(sin(angle)*10).toInt()
-            shiftY+=(cos(angle)*10).toInt()
+            dy+=sin(angle)*10
+            dx-=cos(angle)*10
+            shiftY-=(sin(angle)*10).toInt()
+            shiftX+=(cos(angle)*10).toInt()
             x=dx.toInt()
             y=dy.toInt()
             true
@@ -106,7 +106,7 @@ data class Player(override var x: Int = 300,
     }
 
     fun hit() {
-        damage+=0.5
+        damage++
     }
 
     override fun equals(other: Any?): Boolean {

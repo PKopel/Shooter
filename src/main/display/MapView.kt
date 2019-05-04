@@ -19,6 +19,8 @@ class MapView : JPanel() {
         for (obstacle in objects.obstacles) obstacle.paint(g,this)
         for (shooter in objects.shooters) shooter.paint(g,this)
         for (missile in Game.missiles) missile.paint(g,this)
+        g.color= Color.RED
+        g.fillRect(0,0,10,100-Game.damage*5)
 
     }
 

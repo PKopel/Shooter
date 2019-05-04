@@ -10,7 +10,7 @@ import kotlin.concurrent.timer
 object Game {
 
     fun reset() {
-        damage = 0.0
+        damage = 0
         shiftY = 0
         shiftX = 0
         player = Player(color = StyleData.player)
@@ -24,10 +24,10 @@ object Game {
     }
 
     var player = Player()
-    var damage = 0.0
+    var damage = 0
         set(value) {
             field = value
-            if (value >= 10) lose()
+            if (value >= 20) lose()
             game.repaint()
         }
     var objects = MapObjectSet()
