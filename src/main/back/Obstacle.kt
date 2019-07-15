@@ -1,7 +1,6 @@
 package main.back
 
 import main.data.StyleData
-import main.intersection
 import java.awt.Color
 import java.awt.Graphics
 

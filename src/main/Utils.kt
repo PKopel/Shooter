@@ -1,10 +1,6 @@
 package main
 
-import java.awt.Color
-import java.awt.event.ActionEvent
-import javax.swing.JButton
 import javax.swing.JFrame
-import javax.swing.JRadioButtonMenuItem
 import javax.swing.SwingUtilities.invokeLater
 
 fun run(f: JFrame, width: Int, height: Int) {
@@ -25,37 +21,3 @@ fun run(f: JFrame, width: Int, height: Int, name: String) {
     }
 }
 
-fun radioMenuItem(text: String = "", background: Color = Color.LIGHT_GRAY,
-                  listener: (ActionEvent) -> Unit, selected: Boolean = false): JRadioButtonMenuItem {
-    val item = JRadioButtonMenuItem(text)
-    item.isSelected = selected
-    item.background = background
-    item.addActionListener(listener)
-    return item
-}
-
-fun button(text: String = "", background: Color = Color.LIGHT_GRAY, listener: (ActionEvent) -> Unit): JButton {
-    val button = JButton(text)
-    button.background = background
-    button.addActionListener(listener)
-    return button
-}
-
-infix fun <T : Comparable<T>> ClosedRange<T>.intersection(r: ClosedRange<T>): ClosedRange<T>? {
-    val l = when {
-        this contains r.start -> r.start
-        r contains this.start -> this.start
-        else -> null
-    }
-    val h = when {
-        this contains r.endInclusive -> r.endInclusive
-        r contains this.endInclusive -> this.endInclusive
-        else -> null
-    }
-    return if (l != null && h != null) l..h
-    else null
-}
-
-infix operator fun <T : Comparable<T>> ClosedRange<T>.contains(n: T): Boolean {
-    return this.start <= n && n <= this.endInclusive
-}

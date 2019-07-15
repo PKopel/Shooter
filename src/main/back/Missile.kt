@@ -1,21 +1,23 @@
 package main.back
 
-import main.back.MapObject.Direction.*
-import main.contains
 import main.back.Game.objects
 import main.back.Game.player
 import java.awt.Color
 import java.awt.Graphics
+import java.lang.Math.cos
+import java.lang.Math.sin
 
 data class Missile(override var x: Int,
                    override var y: Int,
-                   val direction: Direction = Up,
+                   private val angle: Double = 0.0,
                    override var color: Color = Color.BLACK) : MapObject() {
     override fun paint(g: Graphics) {
         g.color = color
         g.fillOval(x + Game.shiftX, y + Game.shiftY, width, height)
     }
 
+    private var dx = x.toDouble()
+    private var dy = y.toDouble()
     override val height: Int = 4
     override val width: Int = 4
     private var range = 300
@@ -39,25 +41,14 @@ data class Missile(override var x: Int,
     fun move(): Boolean {
         return if (range > 0) {
             range--
-            when (direction) {
-                Down -> if (canMove(Missile(x, y - 1,color = color))) {
-                    y--
-                    true
-                } else false
-                Up -> if (canMove(Missile(x, y + 1,color = color))) {
-                    y++
-                    true
-                } else false
-                Left -> if (canMove(Missile(x - 1, y,color = color))) {
-                    x--
-                    true
-                } else false
-                Right ->
-                    if (canMove(Missile(x + 1, y,color = color))) {
-                        x++
-                        true
-                    } else false
-            }
+            if(canMove(Missile((dx - cos(angle)).toInt(),(dy - sin(angle)).toInt(),color = color))){
+                dx-=cos(angle)
+                dy+=sin(angle)
+                x=dx.toInt()
+                y=dy.toInt()
+                true
+            } else false
+
         } else {
             Game.missiles.remove(this)
             false
@@ -73,7 +64,7 @@ data class Missile(override var x: Int,
     override fun hashCode(): Int {
         var result = x
         result = 31 * result + y
-        result = 31 * result + direction.hashCode()
+        result = 31 * result + angle.toInt()
         result = 31 * result + height
         result = 31 * result + width
         return result
