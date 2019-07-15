@@ -1,7 +1,6 @@
 package main.display
 
 import main.App
-import main.button
 import main.back.Game
 import main.back.Game.damage
 import main.back.Game.player
@@ -22,30 +21,29 @@ import java.awt.event.MouseEvent
 import javax.swing.JButton
 import javax.swing.JFrame
 import javax.swing.JPanel
-import javax.swing.JTextArea
 
 class GameView : JFrame() {
     private val buttons = JPanel()
     private val back = button(StringData.ret, theme) {
-        if(damage>=10) Game.reset()
+        if (damage >= 10) Game.reset()
         else playing = false
-        run(App, 150, 150, StringData.appName)
+        run(App(), 150, 200, StringData.appName)
         dispose()
     }
     val play = button(StringData.play, theme) {
         val play = (it.source as JButton)
         when (play.text) {
-            StringData.lost,StringData.won -> {
+            StringData.lost, StringData.won -> {
                 Game.reset()
                 play.text = StringData.play
             }
             else -> playing = !playing
         }
     }
-    private val reset = button(StringData.reset, theme){
+    private val reset = button(StringData.reset, theme) {
         Game.reset()
-        play.text=StringData.play
-        play.isVisible=true
+        play.text = StringData.play
+        play.isVisible = true
         game.remove(game.message)
     }
     private val kl = object : KeyAdapter() {
@@ -65,8 +63,6 @@ class GameView : JFrame() {
                     0x41, 0x25 -> {
                         shiftX += 10; game.repaint()
                     }
-                    0x10 -> player.direction=player.direction.next()
-                    0xa -> player.shoot()
                     else -> println(k.paramString())
                 }
         }
@@ -74,8 +70,9 @@ class GameView : JFrame() {
 
     private val ml = object : MouseAdapter(){
 
-        override fun mouseClicked(p0: MouseEvent?) {
-            if(playing) player.shoot()
+        override fun mouseClicked(e: MouseEvent) {
+            //e.translatePoint(shiftX, shiftY)
+            if(playing) player.shoot(e.x,e.y)
         }
     }
 

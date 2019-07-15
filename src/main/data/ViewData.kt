@@ -6,6 +6,6 @@ import main.display.SettingsView
 
 object ViewData {
     val game = MapView()
-    val view = GameView()
-    val settings = SettingsView()
+    var view = GameView()
+    var settings = SettingsView()
 }

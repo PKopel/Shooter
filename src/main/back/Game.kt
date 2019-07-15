@@ -1,6 +1,7 @@
 package main.back
 
 import main.data.StringData
+import main.data.StyleData
 import main.data.ViewData
 import main.data.ViewData.game
 import main.data.ViewData.view
@@ -14,7 +15,7 @@ object Game {
         damage = 0.0
         shiftY = 0
         shiftX = 0
-        player = Player()
+        player = Player(color = StyleData.player)
         bufferX = 0
         bufferY = 0
         objects.clear()
@@ -31,14 +32,14 @@ object Game {
             if (value >= 10) lose()
             game.repaint()
         }
-    val objects = MapObjectSet()
+    var objects = MapObjectSet()
     val missiles = Missiles()
     private var bufferX = 0
     var shiftX = 0
         set(value) {
             if ((value < field && player.moveRight()) ||
                     (value > field && player.moveLeft())) {
-                if (Math.abs(value - 250) < 750) {
+                if (Math.abs(value - 100) < 400) {
                     if (bufferX == 0) field = value
                     else bufferX -= 10
                 } else bufferX += 10
@@ -49,7 +50,7 @@ object Game {
         set(value) {
             if ((value < field && player.moveUp()) ||
                     (value > field && player.moveDown())) {
-                if (Math.abs(value - 250) < 750) {
+                if (Math.abs(value - 65) < 435) {
                     if (bufferY == 0) field = value
                     else bufferY -= 10
                 } else bufferY += 10

@@ -10,16 +10,5 @@ abstract class MapObject{
     abstract val width : Int
     abstract var color: Color
     abstract fun paint(g: Graphics)
-    enum class Direction{
-        Up,Down,Left,Right;
-        operator fun next(): Direction{
-            return when(this){
-                Up-> Right
-                Right -> Down
-                Down -> Left
-                Left -> Up
-            }
-        }
-    }
 }
 
