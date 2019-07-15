@@ -22,6 +22,7 @@ import java.awt.event.MouseEvent
 import javax.swing.JButton
 import javax.swing.JFrame
 import javax.swing.JPanel
+import javax.swing.JTextArea
 
 class GameView : JFrame() {
     private val buttons = JPanel()
@@ -44,6 +45,8 @@ class GameView : JFrame() {
     private val reset = button(StringData.reset, theme){
         Game.reset()
         play.text=StringData.play
+        play.isVisible=true
+        game.remove(game.message)
     }
     private val kl = object : KeyAdapter() {
 
@@ -74,7 +77,6 @@ class GameView : JFrame() {
         override fun mouseClicked(p0: MouseEvent?) {
             if(playing) player.shoot()
         }
-
     }
 
     init {
