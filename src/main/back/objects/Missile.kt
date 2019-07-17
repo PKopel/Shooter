@@ -1,7 +1,9 @@
-package main.back
+package main.back.objects
 
+import main.back.Game
 import main.back.Game.objects
-import main.back.Game.player
+import main.back.Move
+import main.back.contains
 import java.awt.Color
 import java.awt.Graphics
 import java.lang.Math.cos
@@ -13,7 +15,7 @@ data class Missile(override var x: Int,
                    override var color: Color = Color.BLACK) : MapObject() {
     override fun paint(g: Graphics) {
         g.color = color
-        g.fillOval(x + Game.shiftX, y + Game.shiftY, width, height)
+        g.fillOval(x + Move.shiftX, y + Move.shiftY, width, height)
     }
 
     private var dx = x.toDouble()
@@ -23,32 +25,17 @@ data class Missile(override var x: Int,
     private var range = 300
 
     @Suppress("ReplaceCallWithBinaryOperator")
-    private fun canMove(new: Missile): Boolean {
-        return when {
-            objects.contains(new) -> {
-                Game.missiles.remove(this)
-                false
-            }
-            new.equals(player) && this.color== Color.BLACK -> {
-                player.hit()
-                Game.missiles.remove(this)
-                false
-            }
-            else -> true
-        }
-    }
+
 
     fun move(): Boolean {
-        return if (range > 0) {
+        return if (range > 0 &&
+                !objects.contains(Missile((dx - cos(angle)).toInt(), (dy - sin(angle)).toInt(), color = color))) {
             range--
-            if(canMove(Missile((dx - cos(angle)).toInt(),(dy - sin(angle)).toInt(),color = color))){
-                dx-=cos(angle)
-                dy+=sin(angle)
-                x=dx.toInt()
-                y=dy.toInt()
-                true
-            } else false
-
+            dx -= cos(angle)
+            dy += sin(angle)
+            x = dx.toInt()
+            y = dy.toInt()
+            true
         } else {
             Game.missiles.remove(this)
             false

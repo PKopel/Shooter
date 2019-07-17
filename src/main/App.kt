@@ -1,7 +1,7 @@
 package main
 
 import main.back.Game
-import main.back.MapObjectSet
+import main.back.level.Easy
 import main.data.StringData
 import main.data.StringData.level
 import main.data.StyleData
@@ -29,10 +29,10 @@ class App : JFrame() {
     init {
         difficulty.addActionListener {
             when ((it.source as JComboBox<String>).selectedItem) {
-                level[0] -> Game.objects = MapObjectSet(maxSht = 15)
-                level[1] -> Game.objects = MapObjectSet(maxSht = 20)
-                level[2] -> Game.objects = MapObjectSet(75, 25)
-                level[3] -> Game.objects = MapObjectSet(50, 30)
+                level[0] -> Game.level = Easy
+                level[1] -> Game.level = Easy
+                level[2] -> Game.level = Easy
+                level[3] -> Game.level = Easy
             }
             Game.reset()
         }

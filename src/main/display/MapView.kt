@@ -2,7 +2,6 @@ package main.display
 
 import main.back.Game
 import main.back.Game.objects
-import main.back.Game.player
 import java.awt.Color
 import java.awt.Dimension
 import java.awt.Graphics
@@ -15,10 +14,10 @@ class MapView : JPanel() {
 
     override fun paintComponent(g: Graphics) {
         super.paintComponent(g)
-        for (obstacle in objects.obstacles) obstacle.paint(g)
-        for (shooter in objects.shooters) shooter.paint(g)
+        for (obstacle in objects.obstacles) obstacle?.paint(g)
+        for (shooter in objects.shooters) shooter?.paint(g)
         for (missile in Game.missiles) missile.paint(g)
-        player.paint(g)
+        objects.player.paint(g)
     }
 
     init {

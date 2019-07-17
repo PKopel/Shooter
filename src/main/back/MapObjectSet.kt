@@ -1,15 +1,17 @@
 package main.back
 
-import main.back.Game.player
+import main.back.Game.level
+import main.back.objects.*
 import main.data.StyleData
 import kotlin.math.abs
 import kotlin.random.Random
 
-class MapObjectSet(private val maxObst: Int = 100, private val maxSht: Int = 20) {
+class MapObjectSet {
+    var player = Player()
     var sizeO = 0
     var sizeS = 0
-    val obstacles = Array(maxObst) { Obstacle(0, 0, 0, 0) }
-    val shooters = Array(maxSht) { Shooter(0, 0, 0, 0) }
+    val obstacles: Array<Obstacle?> = Array(level.obsNum) { null }
+    val shooters: Array<Shooter?> = Array(level.shtNum) { null }
     val bounds = arrayOf(Obstacle(-500, -500, 0, 1500),
             Obstacle(1000, -500, 0, 1500),
             Obstacle(-500, -500, 1500, 0),
@@ -19,7 +21,7 @@ class MapObjectSet(private val maxObst: Int = 100, private val maxSht: Int = 20)
     fun add(element: Obstacle): Boolean {
         if (contains(element)) return false
         if (player.equals(element)) return false
-        return if (sizeO < maxObst) {
+        return if (sizeO < level.obsNum) {
             obstacles[sizeO++] = element
             true
         } else false
@@ -29,7 +31,7 @@ class MapObjectSet(private val maxObst: Int = 100, private val maxSht: Int = 20)
     fun add(element: Shooter): Boolean {
         if (contains(element)) return false
         if (player.equals(element)) return false
-        return if (sizeS < maxSht) {
+        return if (sizeS < level.shtNum) {
             shooters[sizeS++] = element
             true
         } else false
@@ -50,7 +52,7 @@ class MapObjectSet(private val maxObst: Int = 100, private val maxSht: Int = 20)
             if (found) shooters[i] = try {
                 shooters[i + 1]
             } catch (e: IndexOutOfBoundsException) {
-                Shooter(0, 0, 0, 0)
+                null
             }
         }
         if (sizeS == 0) {
@@ -66,6 +68,7 @@ class MapObjectSet(private val maxObst: Int = 100, private val maxSht: Int = 20)
         for (sht in shooters)
             if (missile.equals(sht))
                 if (missile.color == StyleData.pMissile) return remove(sht)
+        if(missile.equals(player) && missile.color!=StyleData.pMissile) return player.hit()
         return false
     }
 
@@ -77,18 +80,19 @@ class MapObjectSet(private val maxObst: Int = 100, private val maxSht: Int = 20)
     }
 
     fun fillMap() {
+        player = Player(color = StyleData.player)
         val rand = Random(System.currentTimeMillis())
-        while (Game.objects.sizeO < maxObst) {
+        while (Game.objects.sizeO < level.obsNum) {
             Game.objects.add(Obstacle(
                     (abs(rand.nextInt()) % 150 - 50) * 10 + 1,
                     (abs(rand.nextInt()) % 150 - 50) * 10 + 1,
                     (6 + (rand.nextInt()) % 6) * 10 - 2,
                     (6 + (rand.nextInt()) % 6) * 10 - 2))
         }
-        while (Game.objects.sizeS < maxSht) {
+        while (Game.objects.sizeS < level.shtNum) {
             Game.objects.add(Shooter(
                     (abs(rand.nextInt()) % 150 - 50) * 10 + 1,
-                    (abs(rand.nextInt()) % 150 - 50) * 10 + 1))
+                    (abs(rand.nextInt()) % 150 - 50) * 10 + 1, shoot = level::shoot))
         }
     }
 /*

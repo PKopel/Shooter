@@ -3,10 +3,9 @@ package main.display
 import main.App
 import main.back.Game
 import main.back.Game.damage
-import main.back.Game.player
 import main.back.Game.playing
-import main.back.Game.shiftX
-import main.back.Game.shiftY
+import main.back.Move.shiftX
+import main.back.Move.shiftY
 import main.data.StringData
 import main.data.StyleData
 import main.data.StyleData.theme
@@ -68,11 +67,11 @@ class GameView : JFrame() {
         }
     }
 
-    private val ml = object : MouseAdapter(){
+    private val ml = object : MouseAdapter() {
 
         override fun mouseClicked(e: MouseEvent) {
             //e.translatePoint(shiftX, shiftY)
-            if(playing) player.shoot(e.x,e.y)
+            if (playing) Game.objects.player.shoot(e.x, e.y)
         }
     }
 

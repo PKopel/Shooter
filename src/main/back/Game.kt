@@ -1,60 +1,31 @@
 package main.back
 
+import main.back.level.Easy
+import main.back.level.Level
+import main.back.objects.Missile
+import main.back.objects.Player
 import main.data.StringData
 import main.data.StyleData
-import main.data.ViewData
 import main.data.ViewData.game
 import main.data.ViewData.view
 import java.awt.BorderLayout
-import javax.swing.JTextArea
+import java.util.concurrent.LinkedBlockingQueue
 import kotlin.concurrent.timer
 
 object Game {
 
-    fun reset() {
-        damage = 0.0
-        shiftY = 0
-        shiftX = 0
-        player = Player(color = StyleData.player)
-        bufferX = 0
-        bufferY = 0
-        objects.clear()
-        missiles.clear()
-        objects.fillMap()
-        game.repaint()
-        playing = false
-    }
-
-    var player = Player()
+    var level: Level = Easy
+        set(value) {
+            objects.fillMap()
+            field=value
+        }
+    var objects = MapObjectSet()
+    val missiles = LinkedBlockingQueue<Missile>()
     var damage = 0.0
         set(value) {
             field = value
-            if (value >= 10) lose()
+            if (value >= level.hpPool) lose()
             game.repaint()
-        }
-    var objects = MapObjectSet()
-    val missiles = Missiles()
-    private var bufferX = 0
-    var shiftX = 0
-        set(value) {
-            if ((value < field && player.moveRight()) ||
-                    (value > field && player.moveLeft())) {
-                if (Math.abs(value - 100) < 400) {
-                    if (bufferX == 0) field = value
-                    else bufferX -= 10
-                } else bufferX += 10
-            }
-        }
-    private var bufferY = 0
-    var shiftY = 0
-        set(value) {
-            if ((value < field && player.moveUp()) ||
-                    (value > field && player.moveDown())) {
-                if (Math.abs(value - 65) < 435) {
-                    if (bufferY == 0) field = value
-                    else bufferY -= 10
-                } else bufferY += 10
-            }
         }
 
     var playing = false
@@ -69,18 +40,28 @@ object Game {
             }
         }
 
-    fun won(){
-        game.message.text=StringData.won
-        game.add(BorderLayout.CENTER,game.message)
-        view.play.isVisible=false
-        playing=false
+    fun won() {
+        game.message.text = StringData.won
+        game.add(BorderLayout.CENTER, game.message)
+        view.play.isVisible = false
+        playing = false
     }
 
-    fun lose(){
-        game.message.text=StringData.lost
-        game.add(BorderLayout.CENTER,game.message)
-        view.play.isVisible=false
-        playing=false
+    fun lose() {
+        game.message.text = StringData.lost
+        game.add(BorderLayout.CENTER, game.message)
+        view.play.isVisible = false
+        playing = false
+    }
+
+    fun reset() {
+        damage = 0.0
+        objects.clear()
+        missiles.clear()
+        Move.reset()
+        objects.fillMap()
+        game.repaint()
+        playing = false
     }
 
     init {
@@ -93,7 +74,7 @@ object Game {
                     if (time < 300) {
                         time += 5
                     } else {
-                        for (s in objects.shooters) s.shoot()
+                        for (s in objects.shooters) s?.shoot()
                         time = 0
                     }
                 }
