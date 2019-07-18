@@ -3,9 +3,7 @@ package main.back
 import main.back.level.Easy
 import main.back.level.Level
 import main.back.objects.Missile
-import main.back.objects.Player
 import main.data.StringData
-import main.data.StyleData
 import main.data.ViewData.game
 import main.data.ViewData.view
 import java.awt.BorderLayout
@@ -16,12 +14,14 @@ object Game {
 
     var level: Level = Easy
         set(value) {
-            field=value
-            objects = MapObjectSet()
-            objects.fillMap()
+            field = value
+            reset()
         }
+
     var objects = MapObjectSet()
+
     val missiles = LinkedBlockingQueue<Missile>()
+
     var damage = 0.0
         set(value) {
             field = value
@@ -42,6 +42,7 @@ object Game {
         }
 
     fun won() {
+        game.message.isVisible = true
         game.message.text = StringData.won
         game.add(BorderLayout.CENTER, game.message)
         view.play.isVisible = false
@@ -49,6 +50,7 @@ object Game {
     }
 
     fun lose() {
+        game.message.isVisible = true
         game.message.text = StringData.lost
         game.add(BorderLayout.CENTER, game.message)
         view.play.isVisible = false
@@ -57,15 +59,18 @@ object Game {
 
     fun reset() {
         damage = 0.0
-        objects.clear()
+        objects = MapObjectSet()
         missiles.clear()
-        Move.reset()
+        view.play.isVisible =true
+        game.message.isVisible = false
         objects.fillMap()
+        Move.reset()
         game.repaint()
         playing = false
     }
 
     init {
+        objects.fillMap()
         var time = 0
         timer(daemon = true, period = 5) {
             if (playing) {

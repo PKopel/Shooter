@@ -76,5 +76,7 @@ object Move {
         shiftY = 0
         bufferX = 0
         bufferY = 0
+        x = Game.objects.player.x
+        y = Game.objects.player.y
     }
 }
