@@ -1,7 +1,7 @@
 package main.display
 
 import main.App
-import main.back.Game.player
+import main.back.Game
 import main.data.StringData
 import main.data.StyleData
 import main.data.ViewData
@@ -24,7 +24,7 @@ class SettingsView : JFrame() {
     )
 
     private fun pListener(e: ActionEvent) {
-        player.color = (e.source as JMenuItem).background
+        Game.objects.player.color = (e.source as JMenuItem).background
         for (radio in pColors) if (radio !== e.source) radio.isSelected = false
     }
 
