@@ -16,8 +16,9 @@ object Game {
 
     var level: Level = Easy
         set(value) {
-            objects.fillMap()
             field=value
+            objects = MapObjectSet()
+            objects.fillMap()
         }
     var objects = MapObjectSet()
     val missiles = LinkedBlockingQueue<Missile>()
@@ -65,7 +66,6 @@ object Game {
     }
 
     init {
-        objects.fillMap()
         var time = 0
         timer(daemon = true, period = 5) {
             if (playing) {

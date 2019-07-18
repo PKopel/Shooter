@@ -2,6 +2,9 @@ package main
 
 import main.back.Game
 import main.back.level.Easy
+import main.back.level.Hard
+import main.back.level.Medium
+import main.back.level.VeryHard
 import main.data.StringData
 import main.data.StringData.level
 import main.data.StyleData
@@ -30,9 +33,9 @@ class App : JFrame() {
         difficulty.addActionListener {
             when ((it.source as JComboBox<String>).selectedItem) {
                 level[0] -> Game.level = Easy
-                level[1] -> Game.level = Easy
-                level[2] -> Game.level = Easy
-                level[3] -> Game.level = Easy
+                level[1] -> Game.level = Medium
+                level[2] -> Game.level = Hard
+                level[3] -> Game.level = VeryHard
             }
             Game.reset()
         }
