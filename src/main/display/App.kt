@@ -1,4 +1,4 @@
-package main
+package main.display
 
 import main.back.Game
 import main.back.level.Easy
@@ -9,7 +9,6 @@ import main.data.StringData
 import main.data.StringData.level
 import main.data.StyleData
 import main.data.ViewData
-import main.display.button
 import java.awt.GridLayout
 import javax.swing.JComboBox
 import javax.swing.JFrame
@@ -18,11 +17,11 @@ class App : JFrame() {
     private val data = StyleData
     private val difficulty = JComboBox<String>(level)
     private val start = button(StringData.play, data.theme) {
-        run(ViewData.view, 700, 700, StringData.appName)
+        main.run(ViewData.view, 700, 700, StringData.appName)
         dispose()
     }
     private val settings = button(StringData.settings, data.theme) {
-        run(ViewData.settings, 150, 150)
+        main.run(ViewData.settings, 150, 150)
         dispose()
     }
     private val exit = button(StringData.exit, data.theme) {
@@ -48,10 +47,4 @@ class App : JFrame() {
         add(exit)
     }
 
-    companion object {
-        @JvmStatic
-        fun main(args: Array<String>) {
-            run(App(), 150, 200, StringData.appName)
-        }
-    }
 }

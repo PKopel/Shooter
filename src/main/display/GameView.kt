@@ -1,6 +1,5 @@
 package main.display
 
-import main.App
 import main.back.Game
 import main.back.Game.damage
 import main.back.Game.playing
