@@ -1,12 +1,14 @@
 package main.back.objects
 
 import main.back.Game
+import main.back.Game.scale
 import main.back.Move
 import main.back.intersection
 import main.data.StyleData
 import main.data.StyleData.pMissile
 import java.awt.Color
 import java.awt.Graphics
+import kotlin.math.atan2
 
 data class Player(override var x: Int = 300,
                   override var y: Int = 300,
@@ -17,13 +19,15 @@ data class Player(override var x: Int = 300,
     override fun paint(g: Graphics) {
         g.color = color
         val d = Game.damage.toInt()
-        g.drawOval(x + Move.shiftX, y + Move.shiftY, width, height)
-        g.fillOval(x + Move.shiftX + d, y + Move.shiftY + d, width - 2 * d, height - 2 * d)
+        g.drawOval(((x + Move.shiftX) * scale).toInt(), ((y + Move.shiftY) * scale).toInt(),
+                (width * scale).toInt(), (height * scale).toInt())
+        g.fillOval(((x + Move.shiftX + d) * scale).toInt(), ((y + Move.shiftY + d) * scale).toInt(),
+                ((width - 2 * d) * scale).toInt(), ((height - 2 * d) * scale).toInt())
     }
 
     fun shoot(xm: Int, ym: Int) {
         synchronized(Game.missiles) {
-            val angle = Math.atan2(-(y + Move.shiftY - ym).toDouble(), (x + Move.shiftX - xm).toDouble())
+            val angle = atan2(-(y + Move.shiftY - ym / scale).toDouble(), (x + Move.shiftX - xm / scale).toDouble())
             Game.missiles.put(Missile(x + width / 2, y + height / 2, angle, pMissile))
         }
     }
@@ -33,19 +37,8 @@ data class Player(override var x: Int = 300,
         return true
     }
 
-    override fun equals(other: Any?): Boolean {
-        return if (other is MapObject) this.x..(this.x + this.width) intersection other.x..(other.x + other.width) != null &&
-                this.y..(this.y + this.height) intersection other.y..(other.y + other.height) != null
-        else false
-    }
+    override fun equals(other: Any?): Boolean = super.equals(other)
 
-    override fun hashCode(): Int {
-        var result = x
-        result = 31 * result + y
-        result = 31 * result + width
-        result = 31 * result + height
-        result = 31 * result + color.hashCode()
-        return result
-    }
+    override fun hashCode(): Int = super.hashCode()
 
 }

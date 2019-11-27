@@ -11,11 +11,14 @@ import main.data.StyleData.theme
 import main.data.ViewData.game
 import main.run
 import java.awt.BorderLayout
+import java.awt.Component
 import java.awt.FlowLayout
+import java.awt.GridLayout
 import java.awt.event.KeyAdapter
 import java.awt.event.KeyEvent
 import java.awt.event.MouseAdapter
 import java.awt.event.MouseEvent
+import javax.swing.BoxLayout
 import javax.swing.JButton
 import javax.swing.JFrame
 import javax.swing.JPanel
@@ -78,12 +81,12 @@ class GameView : JFrame() {
         back.addKeyListener(kl)
         play.addKeyListener(kl)
         game.addMouseListener(ml)
-        add(game)
+        this.add(game.apply { alignmentX = Component.CENTER_ALIGNMENT; })
         buttons.background = StyleData.background
         buttons.layout = FlowLayout()
         buttons.add(play)
         buttons.add(reset)
         buttons.add(back)
-        add(BorderLayout.SOUTH, buttons)
+        this.add(BorderLayout.SOUTH, buttons)
     }
 }

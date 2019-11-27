@@ -2,6 +2,7 @@ package main.display
 
 import main.back.Game
 import main.back.Game.objects
+import main.back.Game.scale
 import java.awt.Color
 import java.awt.Dimension
 import java.awt.Graphics
@@ -13,6 +14,10 @@ class MapView : JPanel() {
     val message = JTextArea()
 
     override fun paintComponent(g: Graphics) {
+
+        scale = this.height.toFloat()/650
+        this.setSize((700 * scale).toInt(), this.height)
+
         super.paintComponent(g)
         for (obstacle in objects.obstacles) obstacle?.paint(g)
         for (shooter in objects.shooters) shooter?.paint(g)
@@ -22,6 +27,7 @@ class MapView : JPanel() {
 
     init {
         message.isEditable=false
+        message.font = message.font.deriveFont(30f)
         message.minimumSize= Dimension(100,30)
         background = Color.WHITE
         repaint()

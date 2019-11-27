@@ -8,11 +8,11 @@ import kotlin.random.Random
 
 class MapObjectSet {
     var player = Player()
-    var sizeO = 0
-    var sizeS = 0
+    private var sizeO = 0
+    private var sizeS = 0
     val obstacles: Array<Obstacle?> = Array(level.obsNum) { null }
     val shooters: Array<Shooter?> = Array(level.shtNum) { null }
-    val bounds = arrayOf(Obstacle(-500, -500, 0, 1500),
+    private val bounds = arrayOf(Obstacle(-500, -500, 0, 1500),
             Obstacle(1000, -500, 0, 1500),
             Obstacle(-500, -500, 1500, 0),
             Obstacle(-500, 1000, 1500, 0))
@@ -74,7 +74,7 @@ class MapObjectSet {
 
     fun contains(element: MapObject): Boolean {
         for (bound in bounds) if (element == bound) return true
-        for (obst in obstacles) if (obst == element) return true
+        for (obs in obstacles) if (obs == element) return true
         for (sht in shooters) if (sht == element) return true
         return false
     }

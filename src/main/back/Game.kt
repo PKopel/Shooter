@@ -29,6 +29,8 @@ object Game {
             game.repaint()
         }
 
+    var scale = 1f
+
     var playing = false
         set(value) {
             if (damage < 10) {
@@ -49,6 +51,7 @@ object Game {
         playing = false
     }
 
+    @Suppress("MemberVisibilityCanBePrivate")
     fun lose() {
         game.message.isVisible = true
         game.message.text = StringData.lost

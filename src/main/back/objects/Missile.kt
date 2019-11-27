@@ -2,20 +2,23 @@ package main.back.objects
 
 import main.back.Game
 import main.back.Game.objects
+import main.back.Game.scale
 import main.back.Move
 import main.back.contains
 import java.awt.Color
 import java.awt.Graphics
-import java.lang.Math.cos
-import java.lang.Math.sin
+import kotlin.math.cos
+import kotlin.math.sin
 
 data class Missile(override var x: Int,
                    override var y: Int,
                    private val angle: Double = 0.0,
                    override var color: Color = Color.BLACK) : MapObject() {
+
     override fun paint(g: Graphics) {
         g.color = color
-        g.fillOval(x + Move.shiftX, y + Move.shiftY, width, height)
+        g.fillOval(((x + Move.shiftX) * scale).toInt(), ((y + Move.shiftY) * scale).toInt(),
+                (width * scale).toInt(), (height * scale).toInt())
     }
 
     private var dx = x.toDouble()

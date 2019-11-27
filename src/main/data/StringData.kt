@@ -1,19 +1,22 @@
 package main.data
 
 object StringData {
+    //messages
+    const val won = "You won!"
+    const val lost = "You lost"
+
     //button names
-    val won = "Won"
-    val lost = "Lost"
-    val play = "Play"
-    val stop = "Stop"
-    val exit = "Exit"
-    val ret = "Return"
-    val reset = "Reset"
+    const val play = "Play"
+    const val stop = "Stop"
+    const val exit = "Exit"
+    const val ret = "Return"
+    const val reset = "Reset"
     val opts = arrayOf("Options", "Player color","Obstacles color","Shooters color","Theme")
     val level = arrayOf("Easy","Medium","Hard","Very hard")
+
     //view names
-    val appName = "Shooter"
-    val settings = "Settings"
+    const val appName = "Shooter"
+    const val settings = "Settings"
 
 
 }

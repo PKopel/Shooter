@@ -30,7 +30,7 @@ class App : JFrame() {
 
     init {
         difficulty.addActionListener {
-            when ((it.source as JComboBox<String>).selectedItem) {
+            when ((it.source as JComboBox<*>).selectedItem) {
                 level[0] -> Game.level = Easy
                 level[1] -> Game.level = Medium
                 level[2] -> Game.level = Hard

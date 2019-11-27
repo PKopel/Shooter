@@ -1,7 +1,9 @@
 package main.back
 
+import kotlin.math.atan2
+
 fun angle(x1: Int, x2:Int, y1:Int, y2:Int) : Double =
-        Math.atan2((y1-y2).toDouble(),(x1-x2).toDouble())
+        atan2((y1-y2).toDouble(),(x1-x2).toDouble())
 
 infix fun <T : Comparable<T>> ClosedRange<T>.intersection(r: ClosedRange<T>): ClosedRange<T>? {
     val l = when {
