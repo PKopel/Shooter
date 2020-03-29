@@ -14,10 +14,13 @@ class MapView : JPanel() {
     val message = JTextArea()
 
     override fun paintComponent(g: Graphics) {
-
-        scale = this.height.toFloat()/650
-        this.setSize((700 * scale).toInt(), this.height)
-
+        if (this.height < this.width) {
+            scale = this.height.toFloat() / 700
+            this.setSize((700 * scale).toInt(), this.height)
+        } else {
+            scale = this.width.toFloat() / 700
+            this.setSize(this.width, (700 * scale).toInt())
+        }
         super.paintComponent(g)
         for (obstacle in objects.obstacles) obstacle?.paint(g)
         for (shooter in objects.shooters) shooter?.paint(g)
@@ -26,9 +29,9 @@ class MapView : JPanel() {
     }
 
     init {
-        message.isEditable=false
+        message.isEditable = false
         message.font = message.font.deriveFont(30f)
-        message.minimumSize= Dimension(100,30)
+        message.minimumSize = Dimension(100, 30)
         background = Color.WHITE
         repaint()
     }

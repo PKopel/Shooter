@@ -17,7 +17,7 @@ class App : JFrame() {
     private val data = StyleData
     private val difficulty = JComboBox<String>(level)
     private val start = button(StringData.play, data.theme) {
-        main.run(ViewData.view, 700, 700, StringData.appName)
+        main.run(ViewData.view, 700, 750, StringData.appName)
         dispose()
     }
     private val settings = button(StringData.settings, data.theme) {

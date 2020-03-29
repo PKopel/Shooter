@@ -81,7 +81,7 @@ class GameView : JFrame() {
         back.addKeyListener(kl)
         play.addKeyListener(kl)
         game.addMouseListener(ml)
-        this.add(game.apply { alignmentX = Component.CENTER_ALIGNMENT; })
+        this.add(BorderLayout.CENTER, game)
         buttons.background = StyleData.background
         buttons.layout = FlowLayout()
         buttons.add(play)
