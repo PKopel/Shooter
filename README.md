@@ -1,4 +1,11 @@
 # Shooter
 simple shooter game in Kotlin
 
-autor: [Paweł Kopel](https://github.com/PKopel)
+## User Manual
+
+1) Moving: arrows or awsd
+2) Shooting: mouse
+
+### Author
+* **[Paweł Kopel](https://github.com/PKopel)**
+
